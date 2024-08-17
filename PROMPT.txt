@@ -1,0 +1,7 @@
+Necesito un menu lateral colapsable en Bootstrap 5 y un navbar desde donde se pueda hacer login in / log out 
+
+Para iniciar:
+
+- Menu lateral del lado derecho, colapsable 
+- Navbar con el login
+- El Menu lateral con solo 3 opciones donde cada una tiene otras dos en cada rama. Las ramas deben ser colapsables.

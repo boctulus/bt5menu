@@ -1,0 +1,5 @@
+orange		#F37025 (active page button icon, hover element)
+light orange	#FFE4C6 (active page button background)
+grey		#6B7C91 (icons)
+light grey	#B8C7CF (account icon background)
+light grey	#E9F0F1 (page background, hover button background)
