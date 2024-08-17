@@ -245,14 +245,15 @@
     <script src="assets/third_party/bootstrap-5.3/bootstrap.bundle.min.js"></script>
     
     <script>
-        const conf = {
+        const menu_config = {
             "menu_starts_expanded": true,
-            "menu_options_starts_expanded": true  /* not implemented */
+            "menu_options_starts_expanded": true,  /* not implemented */
+            "role": "manager"
         };
 
-        const links = { 
+        const menu_items = { 
             admin:  [
-                { text: "Exam list", link: "/dashboard/exam-list", icon: "list", /* "separator": true */ },
+                { text: "Exam list", link: "/dashboard/exam-list", icon: "heart", /* "separator": true */ },
                 { text: "Fast reporting", link: "/dashboard/fast-reporting", icon: "zap" },
                 { text: "Patients", link: "/dashboard/patients", icon: "users" },
                 { text: "Administration",
@@ -295,9 +296,9 @@
 
             // Other user-role's objects for rendering. E.g.
             manager: [
-                {},
-                {},
-                {},
+                { text: "Exam list", link: "/dashboard/exam-list", icon: "heart", /* "separator": true */ },
+                { text: "Fast reporting", link: "/dashboard/fast-reporting", icon: "zap" },
+                { text: "Info", link: "javascript:alert('System is operational')", icon: "info" }
             ]
         };       
        
@@ -307,10 +308,10 @@
         const content = document.getElementById('content');
         const sidebarCollapse = document.getElementById('sidebarCollapse');
     
-        function generateSidebarLinks(links, level = 0) {
+        function generateSidebarLinks(menu_items, level = 0) {
             let sidebarHTML = `<ul class="list-unstyled${level > 0 ? ' treeview-menu' : ''}">`;
         
-            links.forEach((link, index) => {
+            menu_items.forEach((link, index) => {
                 const hasChilds = link.childs && link.childs.length > 0;
                 const id = `menu-${link.text.replace(/\s+/g, '-').toLowerCase()}`;
                 
@@ -358,7 +359,7 @@
         sidebar.innerHTML = `
             <div style="margin-top: 5em;">
                 <div role="list" class="v-list" style="margin-top: 3em; background-color: rgb(0, 0, 0); color: rgb(184, 199, 206);">
-                    ${generateSidebarLinks(links.admin)}
+                    ${generateSidebarLinks(menu_items[menu_config.role])}
                 </div>
             </div>`;
         
@@ -387,8 +388,8 @@
         
             handleResize();
     
-            // Inicializar el estado del sidebar según conf.start_collapsed
-            if (!conf.start_collapsed) {
+            // Inicializar el estado del sidebar según menu_config.start_collapsed
+            if (!menu_config.start_collapsed) {
                 toggleSidebar();
             }
 
