@@ -198,3 +198,37 @@
     }
 }
 
+
+#sidebar {
+    width: 60px;
+    left: 0;
+    transition: width 0.3s;
+}
+
+#sidebar.expanded {
+    width: 300px;
+}
+
+#sidebar .item_node,
+#sidebar .angle-down {
+    display: none;
+}
+
+#sidebar.expanded .item_node,
+#sidebar.expanded .angle-down {
+    display: inline-block;
+}
+
+#sidebar .v-icon {
+    margin-right: 0;
+}
+
+#sidebar.expanded .v-icon {
+    margin-right: 10px;
+}
+
+#content {
+    margin-left: 60px;
+    transition: margin-left 0.3s;
+}
+
