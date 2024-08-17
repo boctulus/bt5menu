@@ -3,216 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú Lateral Colapsable</title>
+    <title>Mini Admin Menu</title>
 
     <!-- Bootstrap CSS -->
     <link href="assets/third_party/bootstrap-5.3/bootstrap.min.css" rel="stylesheet">
 
+    <!-- AsideMenu -->
+    <link href="assets/css/asidemenu.css" rel="stylesheet">
+
     <!-- Feather -->
     <script src="assets/third_party/feathericons/feather.min.js"></script>
-    
-    <style>
-        #sidebar {
-            height: 102vh;
-            position: fixed;
-            top: -10px;           
-            left: -300px;
-            width: 300px;
-            background-color: #000000;
-            color: #b8c7ce;
-            transition: all 0.3s;
-            overflow-y: auto;
-            z-index: 1050;
-            -webkit-user-select: none;  /* Safari */
-            -moz-user-select: none;     /* Firefox */
-            -ms-user-select: none;      /* Internet Explorer/Edge */
-            user-select: none;          /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
-        }           
 
-        #sidebar a {
-            -webkit-user-select: text;
-            -moz-user-select: text;
-            -ms-user-select: text;
-            user-select: text;
-        }
-
-        #sidebar.expanded {
-            left: 0;
-        }
-
-        #content {
-            transition: margin-left 0.3s;
-            padding-top: 80px !important;
-            background-color: #282828; /* or any other */
-            color: #F9F6EE;
-            min-height: 100vh;
-        }
-
-        .navbar-toggler {
-            position: fixed;
-            right: 10px;
-            top: 10px;
-            z-index: 1060;
-        }
-
-        .navbar {
-            z-index: 1055;
-        }
-
-        #sidebar .item {
-            display: flex;
-            align-items: center;
-            padding: 10px 15px;
-            cursor: pointer;
-        }
-
-        #sidebar .item i {
-            color: #cfa18b;
-            margin-right: 10px;
-        }
-
-        #sidebar .item_node {
-            flex-grow: 1;
-        }
-
-        #sidebar .angle-down {
-            margin-left: auto;
-        }
-
-        #sidebar .treeview-menu {
-            list-style-type: none;
-            padding-left: 30px;
-        }
-
-        #sidebar .treeview-menu .treeview-menu {
-            padding-left: 40px; 
-        }
-
-        #sidebar .treeview-menu .sub {
-            display: flex;
-            align-items: center;
-            padding: 5px 0;
-            color: #b8c7ce;
-            text-decoration: none;
-        }
-
-        #sidebar .treeview-menu .sub i {
-            margin-right: 10px;
-        }
-
-        #sidebar .link {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .dropdown-divider {
-            border-top: 1px solid #4b646f;
-            margin: 10px 0;
-        }
-
-        #sidebar ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        #sidebar .collapse {
-            transition: max-height 0.3s ease-out;
-            max-height: 0;
-            overflow: hidden;
-        }
-
-        #sidebar .collapse.show {
-            max-height: 1000px;
-        }
-
-        #sidebar .item.leaf:hover {
-            color: #ffffff;
-        }
-
-        #sidebar .item.leaf:hover i {
-            color: #ffffff;
-        }
-
-        #sidebar .item.leaf {
-            transition: background-color 0.3s;
-        }
-    
-        #sidebar .item.leaf:hover {
-            background-color: #1e282c;
-            color: #ffffff;
-        }
-    
-        #sidebar .item.leaf:hover i {
-            color: #ffffff;
-        }
-    
-        #sidebar .item.link {
-            cursor: pointer;
-        }
-    
-        #sidebar a.item {
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            align-items: center;
-        }
-    
-        #sidebar .v-icon {
-            color: #cfa18b;
-            margin-right: 10px;
-        }
-        
-        /* Aplicar hover solo a elementos de primer nivel */
-        #sidebar > div > div > ul > li > .item.leaf:hover,
-        #sidebar > div > div > ul > li > a.item.leaf:hover {
-            background-color: #1e282c;
-            color: #ffffff;
-        }
-        
-        #sidebar > div > div > ul > li > .item.leaf:hover i,
-        #sidebar > div > div > ul > li > a.item.leaf:hover i {
-            color: #ffffff;
-        }
-        
-        /* Aplicar hover a todos los elementos de primer nivel */
-        #sidebar > div > div > ul > li > .item:hover,
-        #sidebar > div > div > ul > li > a.item:hover {
-            background-color: #1e282c;
-            color: #ffffff;
-        }
-
-        #sidebar > div > div > ul > li > .item:hover i,
-        #sidebar > div > div > ul > li > a.item:hover i {
-            color: #ffffff;
-        }
-
-        /* Remover el hover de los elementos internos */
-        #sidebar .treeview-menu .item:hover {
-            background-color: transparent;
-            color: inherit;
-        }
-
-        #sidebar .treeview-menu .item:hover i {
-            color: #cfa18b;
-        }
-
-        /* Remover el hover de los elementos internos */
-        #sidebar .treeview-menu .item.leaf:hover {
-            background-color: transparent;
-            color: inherit;
-        }
-        
-        #sidebar .treeview-menu .item.leaf:hover i {
-            color: #cfa18b;
-        }    
-
-        @media (min-width: 992px) {
-            #content.shifted {
-                margin-left: 300px;
-            }
-        }
-
-    </style>
+    <!-- AsideMenu -->
+    <script src="assets/js/asidemenu.js"></script>
 </head>
 <body>
 
@@ -222,7 +25,7 @@
             <button id="sidebarCollapse" class="navbar-toggler" type="button">
                 <span class="navbar-toggler-icon custom-toggler"></span>
             </button>
-            <a class="navbar-brand me-auto" href="#">Mi Aplicación</a>
+            <a class="navbar-brand me-auto" href="#">My App</a>
         </div>
     </nav>
 
@@ -248,7 +51,7 @@
         const menu_config = {
             "menu_starts_expanded": true,
             "menu_options_starts_expanded": true,  /* not implemented */
-            "role": "manager"
+            "role": "admin"
         };
 
         const menu_items = { 
@@ -303,100 +106,12 @@
         };       
        
 
-        document.addEventListener('DOMContentLoaded', function() {
-        const sidebar = document.getElementById('sidebar');
-        const content = document.getElementById('content');
-        const sidebarCollapse = document.getElementById('sidebarCollapse');
-    
-        function generateSidebarLinks(menu_items, level = 0) {
-            let sidebarHTML = `<ul class="list-unstyled${level > 0 ? ' treeview-menu' : ''}">`;
-        
-            menu_items.forEach((link, index) => {
-                const hasChilds = link.childs && link.childs.length > 0;
-                const id = `menu-${link.text.replace(/\s+/g, '-').toLowerCase()}`;
-                
-                if (level === 0 && link.link && !hasChilds) {
-                    // Para elementos de primer nivel con enlace y sin hijos
-                    sidebarHTML += `
-                        <li>
-                            <a href="${link.link}" class="item leaf link">
-                                <i aria-hidden="true" class="v-icon" data-feather="${link.icon}"></i>
-                                <span class="item_node engravers">${link.text}</span>
-                            </a>
-                        </li>`;
-                } else {
-                    sidebarHTML += `
-                        <li>
-                            <div class="item${hasChilds ? '' : ' leaf'}${link.link ? ' link' : ''}" ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} ${link.link ? `onclick="window.location.href='${link.link}'"` : ''}>
-                                <i aria-hidden="true" class="v-icon" data-feather="${link.icon}"></i>
-                                <span class="item_node engravers">${link.text}</span>
-                                ${hasChilds ? '<i class="angle-down" data-feather="chevron-down"></i>' : ''}
-                            </div>`;
-                    
-                    if (hasChilds) {
-                        sidebarHTML += `
-                            <div class="collapse" id="${id}">
-                                ${generateSidebarLinks(link.childs, level + 1)}
-                            </div>`;
-                    }
-                    
-                    sidebarHTML += '</li>';
-                }
+        /*
+            AsideMenu init
+        */
 
-                if (link.separator != 'undefined' && link.separator){
-                    // Support only for the first level
-                    if (level === 0) {
-                        sidebarHTML += '<li role="presentation"><hr role="separator" aria-orientation="horizontal" class="dropdown-divider"></li>';
-                    }
-                }
-                
-            });
-        
-            sidebarHTML += '</ul>';
-            return sidebarHTML;
-        }
-        
-        sidebar.innerHTML = `
-            <div style="margin-top: 5em;">
-                <div role="list" class="v-list" style="margin-top: 3em; background-color: rgb(0, 0, 0); color: rgb(184, 199, 206);">
-                    ${generateSidebarLinks(menu_items[menu_config.role])}
-                </div>
-            </div>`;
-        
-            function toggleSidebar() {
-                sidebar.classList.toggle('expanded');
-                sidebarCollapse.setAttribute('aria-expanded', sidebar.classList.contains('expanded'));
-        
-                if (window.innerWidth >= 992) {
-                    content.classList.toggle('shifted');
-                }
-            }
-        
-            sidebarCollapse.addEventListener('click', toggleSidebar);
-        
-            function handleResize() {
-                if (window.innerWidth < 992) {
-                    content.classList.remove('shifted');
-                    if (sidebar.classList.contains('expanded')) {
-                        sidebar.classList.remove('expanded');
-                        sidebarCollapse.setAttribute('aria-expanded', 'false');
-                    }
-                }
-            }
-        
-            window.addEventListener('resize', handleResize);
-        
-            handleResize();
-    
-            // Inicializar el estado del sidebar según menu_config.start_collapsed
-            if (!menu_config.start_collapsed) {
-                toggleSidebar();
-            }
-
-             // Feather icons
-            feather.replace();
-        });
-
+        const menu = new AsideMenu(menu_items, menu_config);
+        menu.init();        
        
     </script>
 </body>

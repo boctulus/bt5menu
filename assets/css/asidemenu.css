@@ -1,0 +1,199 @@
+#sidebar {
+    height: 102vh;
+    position: fixed;
+    top: -10px;           
+    left: -300px;
+    width: 300px;
+    background-color: #000000;
+    color: #b8c7ce;
+    transition: all 0.3s;
+    overflow-y: auto;
+    z-index: 1050;
+    -webkit-user-select: none;  /* Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* Internet Explorer/Edge */
+    user-select: none;          /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}           
+
+#sidebar a {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+#sidebar.expanded {
+    left: 0;
+}
+
+#content {
+    transition: margin-left 0.3s;
+    padding-top: 80px !important;
+    background-color: #282828; /* or any other */
+    color: #F9F6EE;
+    min-height: 100vh;
+}
+
+.navbar-toggler {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    z-index: 1060;
+}
+
+.navbar {
+    z-index: 1055;
+}
+
+#sidebar .item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+#sidebar .item i {
+    color: #cfa18b;
+    margin-right: 10px;
+}
+
+#sidebar .item_node {
+    flex-grow: 1;
+}
+
+#sidebar .angle-down {
+    margin-left: auto;
+}
+
+#sidebar .treeview-menu {
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+#sidebar .treeview-menu .treeview-menu {
+    padding-left: 40px; 
+}
+
+#sidebar .treeview-menu .sub {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    color: #b8c7ce;
+    text-decoration: none;
+}
+
+#sidebar .treeview-menu .sub i {
+    margin-right: 10px;
+}
+
+#sidebar .link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.dropdown-divider {
+    border-top: 1px solid #4b646f;
+    margin: 10px 0;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#sidebar .collapse {
+    transition: max-height 0.3s ease-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+#sidebar .collapse.show {
+    max-height: 1000px;
+}
+
+#sidebar .item.leaf:hover {
+    color: #ffffff;
+}
+
+#sidebar .item.leaf:hover i {
+    color: #ffffff;
+}
+
+#sidebar .item.leaf {
+    transition: background-color 0.3s;
+}
+
+#sidebar .item.leaf:hover {
+    background-color: #1e282c;
+    color: #ffffff;
+}
+
+#sidebar .item.leaf:hover i {
+    color: #ffffff;
+}
+
+#sidebar .item.link {
+    cursor: pointer;
+}
+
+#sidebar a.item {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+#sidebar .v-icon {
+    color: #cfa18b;
+    margin-right: 10px;
+}
+
+/* Aplicar hover solo a elementos de primer nivel */
+#sidebar > div > div > ul > li > .item.leaf:hover,
+#sidebar > div > div > ul > li > a.item.leaf:hover {
+    background-color: #1e282c;
+    color: #ffffff;
+}
+
+#sidebar > div > div > ul > li > .item.leaf:hover i,
+#sidebar > div > div > ul > li > a.item.leaf:hover i {
+    color: #ffffff;
+}
+
+/* Aplicar hover a todos los elementos de primer nivel */
+#sidebar > div > div > ul > li > .item:hover,
+#sidebar > div > div > ul > li > a.item:hover {
+    background-color: #1e282c;
+    color: #ffffff;
+}
+
+#sidebar > div > div > ul > li > .item:hover i,
+#sidebar > div > div > ul > li > a.item:hover i {
+    color: #ffffff;
+}
+
+/* Remover el hover de los elementos internos */
+#sidebar .treeview-menu .item:hover {
+    background-color: transparent;
+    color: inherit;
+}
+
+#sidebar .treeview-menu .item:hover i {
+    color: #cfa18b;
+}
+
+/* Remover el hover de los elementos internos */
+#sidebar .treeview-menu .item.leaf:hover {
+    background-color: transparent;
+    color: inherit;
+}
+
+#sidebar .treeview-menu .item.leaf:hover i {
+    color: #cfa18b;
+}    
+
+@media (min-width: 992px) {
+    #content.shifted {
+        margin-left: 300px;
+    }
+}

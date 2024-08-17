@@ -1,0 +1,14 @@
+node_modules/
+vendor/
+*.zip
+*.rar
+*.tar
+*.7z
+*.gz
+*.txt
+*.csv
+uploads/*
+logs/
+tmp/
+storage/security/
+.env
