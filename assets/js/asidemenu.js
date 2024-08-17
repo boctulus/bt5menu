@@ -1,7 +1,3 @@
-/*
-    By boctulus
-*/
-
 class AsideMenu {
     constructor(menuItems, menuConfig) {
         this.menuItems = menuItems;
@@ -91,14 +87,18 @@ class AsideMenu {
         this.sidebar.classList.toggle('expanded');
         this.sidebarCollapse.setAttribute('aria-expanded', this.sidebar.classList.contains('expanded'));
 
+        if (this.sidebar.classList.contains('expanded')) {
+            this.expandAllItems();
+        } else {
+            this.collapseAllItems();
+        }
+
         if (window.innerWidth >= 992) {
             this.content.classList.toggle('shifted');
         }
 
         feather.replace();
     }
-
-
 
     handleEvents() {
         this.sidebarCollapse.addEventListener('click', () => this.toggleSidebar());
@@ -111,7 +111,18 @@ class AsideMenu {
             if (this.sidebar.classList.contains('expanded')) {
                 this.sidebar.classList.remove('expanded');
                 this.sidebarCollapse.setAttribute('aria-expanded', 'false');
+                this.collapseAllItems();
             }
         }
+    }
+
+    collapseAllItems() {
+        const collapseElements = this.sidebar.querySelectorAll('.collapse');
+        collapseElements.forEach(el => el.classList.remove('show'));
+    }
+
+    expandAllItems() {
+        const collapseElements = this.sidebar.querySelectorAll('.collapse');
+        collapseElements.forEach(el => el.classList.add('show'));
     }
 }
