@@ -252,10 +252,10 @@
 
         const links = { 
             admin:  [
-                { text: "Exam list", link: "/dashboard/exam-list", icon: "list" },
+                { text: "Exam list", link: "/dashboard/exam-list", icon: "list", /* "separator": true */ },
                 { text: "Fast reporting", link: "/dashboard/fast-reporting", icon: "zap" },
                 { text: "Patients", link: "/dashboard/patients", icon: "users" },
-                { text: "Administration",  
+                { text: "Administration",
                   childs: [ 
                     { text: "Roles", 
                       childs: [
@@ -341,10 +341,14 @@
                     
                     sidebarHTML += '</li>';
                 }
-        
-                if (index === 0 && level === 0) {
-                    sidebarHTML += '<li role="presentation"><hr role="separator" aria-orientation="horizontal" class="dropdown-divider"></li>';
+
+                if (link.separator != 'undefined' && link.separator){
+                    // Support only for the first level
+                    if (level === 0) {
+                        sidebarHTML += '<li role="presentation"><hr role="separator" aria-orientation="horizontal" class="dropdown-divider"></li>';
+                    }
                 }
+                
             });
         
             sidebarHTML += '</ul>';
