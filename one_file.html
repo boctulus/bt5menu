@@ -43,6 +43,9 @@
         #content {
             transition: margin-left 0.3s;
             padding-top: 80px !important;
+            background-color: #282828; /* or any other */
+            color: #F9F6EE;
+            min-height: 100vh;
         }
 
         .navbar-toggler {
@@ -249,41 +252,54 @@
 
         const links = { 
             admin:  [
-                { text: "Panel de control", link: "/dashboard", icon: "settings" },
-                { text: "Home",  
+                { text: "Exam list", link: "/dashboard/exam-list", icon: "list" },
+                { text: "Fast reporting", link: "/dashboard/fast-reporting", icon: "zap" },
+                { text: "Patients", link: "/dashboard/patients", icon: "users" },
+                { text: "Administration",  
                   childs: [ 
-                    { text: "Ir al inicio", link: "/home" }, 
-                    { text: "Slider", link: "/dashboard/slider" }, 
-                    { text: "Contacto", link: "/dashboard/contacto" }
-                  ], 
-                  icon: "home" 
-                },
-                { text: "Mensajes",  link: "/dashboard/mensajes", icon: "mail" },  
-                { text: "Servicios",  link: "/dashboard/servicios", icon: "bell" },
-                { text: "Posts",  link: "/dashboard/posts", icon: "copy"},               
-                { text: "Usuarios",  link: "/dashboard/usuarios", icon: "briefcase" },
-                { text: "Archivos",  
-                  childs: [ 
-                    { text: "Boletas", link: "/dashboard/archivos/boletas" }, 
-                    { text: "Documentos", 
+                    { text: "Roles", 
                       childs: [
-                        { text: "Contratos", link: "/dashboard/archivos/documentos/contratos" },
-                        { text: "Informes", 
-                            childs: [
-                                { text: "Tipo A", link: "/dashboard/archivos/documentos/informes/a" },
-                                { text: "Tipo B", link: "/dashboard/archivos/documentos/informes/b" }
-                            ] 
-                        }
-                      ]
-                    }, 
-                    { text: "Legales", link: "/dashboard/archivos/legal"}
-                  ], 
-                  icon: "folder" 
+                        { text: "Users", link: "/dashboard/administration/roles/users", icon: "user" }
+                      ],
+                      icon: "shield"
+                    },
+                    { text: "Sites", link: "/dashboard/administration/sites", icon: "map-pin" },
+                    { text: "Groups", link: "/dashboard/administration/groups", icon: "layers" },
+                    { text: "Devices", link: "/dashboard/administration/devices", icon: "cpu" }
+                  ],
+                  icon: "settings"
                 },
-                { text: "Alex Bot",  link: "javascript:alert('Ciao, sono Alex bot!')", icon: "cpu" },
+                { text: "Settings",  
+                  childs: [ 
+                    { text: "Item 1", link: "/dashboard/settings/item1", icon: "sliders" }, 
+                    { text: "Item 2", link: "/dashboard/settings/item2", icon: "sliders" }, 
+                    { text: "Item 3", link: "/dashboard/settings/item3", icon: "sliders" }
+                  ],
+                  icon: "settings"
+                },
+                { text: "Integration Layer",  
+                  childs: [ 
+                    { text: "Item 1", link: "/dashboard/integration-layer/item1", icon: "layers" }
+                  ],
+                  icon: "layers"
+                },
+                { text: "System",  
+                  childs: [ 
+                    { text: "Item 1", link: "/dashboard/system/item1", icon: "server" }, 
+                    { text: "Item 2", link: "/dashboard/system/item2", icon: "server" }
+                  ],
+                  icon: "cpu"
+                },
+                { text: "Info", link: "javascript:alert('System is operational')", icon: "info" }
             ],
-            // Other user-role's objects for rendering
-        };
+
+            // Other user-role's objects for rendering. E.g.
+            manager: [
+                {},
+                {},
+                {},
+            ]
+        };       
        
 
         document.addEventListener('DOMContentLoaded', function() {
