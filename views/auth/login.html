@@ -1,0 +1,27 @@
+<!-- 
+    Partial view
+
+    Icons using FontAwesome *
+-->
+
+<div class="row vh-100 d-flex align-items-center">
+	<div class="col-xs-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+
+		<div class="card card-primary card-outline"><div class="card-header"><h5 class="card-title">Log in</h5></div> <div class="card-body"><div class="social-btn">
+				<a href="facebook/login" class="btn btn-primary w-100"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+				<a href="google/login" class="btn btn-danger w-100"><i class="fa fa-google"></i> Sign in with <b>Google</b></a></div> <div class="or-seperator"><i>or</i></div> <div class="input-group mb-3"><span class="input-group-text"><i class="fas fa-user"></i></span><input class="form-control" type="text" id="email_username" placeholder="email o username" required="required" style="font-size:1rem"/></div> <div class="input-group mb-3"><span class="input-group-text"><i class="fas fa-key"></i></span><input class="form-control" type="password" id="password" placeholder="Password" required="required" style="font-size:1rem"/><span class="input-group-text" onclick="password_show_hide();">
+				<i class="fas fa-eye" id="show_eye"></i>
+				<i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+				</span></div> <div style="margin-bottom:1em;">
+				<a href="login/rememberme">Ricorda la password</a>
+			</div>	
+
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary btn-lg btn-block login-btn w-100" onClick="login()">Login</button>
+			</div>
+			
+			<div class="mt-3" style="text-align:right;">
+				Non registrato? <a href="login/register">registro</a>
+			</div> <span id="loginError" class="mt-5"></span></div> </div>
+	</div>
+</div>

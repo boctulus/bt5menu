@@ -1,12 +1,20 @@
 TODO BT5MENU
 ============
 
---- forkear
+https://github.com/boctulus/bt5menu_feather
 
-	- Usar "feathericons"
+- Usar "feathericons"
 
-	- Terminar el navbar
+- Terminar el navbar (espcialmente la parte del login)
 
-	- Ver demas detalles
+- Ver demas detalles
+
+- Implementar:
+
+const conf = {
+    "menu_starts_expanded": true,
+    "menu_options_starts_expanded": true  /* implement */
+};
 
 
+file:///D:/Desktop/BT5%20MENU/one_file.html
