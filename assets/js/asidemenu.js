@@ -87,9 +87,7 @@ class AsideMenu {
         this.sidebar.classList.toggle('expanded');
         this.sidebarCollapse.setAttribute('aria-expanded', this.sidebar.classList.contains('expanded'));
 
-        if (this.sidebar.classList.contains('expanded')) {
-            this.expandAllItems();
-        } else {
+        if (!this.sidebar.classList.contains('expanded')) {
             this.collapseAllItems();
         }
 
@@ -119,10 +117,5 @@ class AsideMenu {
     collapseAllItems() {
         const collapseElements = this.sidebar.querySelectorAll('.collapse');
         collapseElements.forEach(el => el.classList.remove('show'));
-    }
-
-    expandAllItems() {
-        const collapseElements = this.sidebar.querySelectorAll('.collapse');
-        collapseElements.forEach(el => el.classList.add('show'));
     }
 }
