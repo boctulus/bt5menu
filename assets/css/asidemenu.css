@@ -143,6 +143,10 @@
     align-items: center;
 }
 
+#list-wrapper {
+    margin-top: 80px;
+}
+
 #sidebar .v-icon {
     color: #cfa18b;
     margin-right: 10px;
