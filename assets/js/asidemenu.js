@@ -49,15 +49,21 @@ class AsideMenu {
                         <a href="${link.link}" class="item leaf link">
                             <i aria-hidden="true" class="v-icon" data-feather="${link.icon}"></i>
                             <span class="item_node engravers">${link.text}</span>
+                            ${link.counter ? `<span class="counter">${link.counter}</span>` : ''}
                         </a>
                     </li>`;
             } else {
                 sidebarHTML += `
                     <li>
-                        <div class="item${hasChilds ? '' : ' leaf'}${link.link ? ' link' : ''}" ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} ${link.link ? `onclick="window.location.href='${link.link}'"` : ''}>
+                        <div class="item${hasChilds ? '' : ' leaf'}${link.link ? ' link' : ''}" 
+                             ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} 
+                             ${link.link ? `onclick="window.location.href='${link.link}'"` : ''}
+                             ${hasChilds ? 'onclick="this.closest(\'#sidebar\').classList.add(\'expanded\')"' : ''}>
                             <i aria-hidden="true" class="v-icon" data-feather="${link.icon}"></i>
                             <span class="item_node engravers">${link.text}</span>
-                            ${hasChilds ? '<i class="angle-right" data-feather="chevron-right"></i><i class="angle-down" data-feather="chevron-down"></i>' : ''}
+                            ${hasChilds ? 
+                                '<i class="angle-right" data-feather="chevron-right"></i><i class="angle-down" data-feather="chevron-down"></i>' : 
+                                (link.counter ? `<span class="counter">${link.counter}</span>` : '')}
                         </div>`;
 
                 if (hasChilds) {
@@ -91,6 +97,7 @@ class AsideMenu {
 
         feather.replace();
     }
+
 
 
     handleEvents() {
