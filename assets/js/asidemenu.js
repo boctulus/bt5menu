@@ -28,9 +28,11 @@ class AsideMenu {
     }
 
     renderMenu() {
+        const margin_top = this.menuConfig.margin_top != 'undefined' ?  this.menuConfig.margin_top : "0px";
+
         this.sidebar.innerHTML = `
-            <div style="margin-top: 5em;">
-                <div role="list" class="v-list" style="margin-top: 3em; background-color: rgb(0, 0, 0); color: rgb(184, 199, 206);">
+            <div style="margin-top: ${margin_top};">
+                <div role="list" class="v-list" background-color: rgb(0, 0, 0); color: rgb(184, 199, 206);">
                     ${this.generateSidebarLinks(this.menuItems[this.menuConfig.role])}
                 </div>
             </div>`;
