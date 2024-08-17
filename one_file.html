@@ -8,8 +8,8 @@
     <!-- Bootstrap CSS -->
     <link href="assets/third_party/bootstrap-5.3/bootstrap.min.css" rel="stylesheet">
 
-    <!-- FontAwesome CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Feather -->
+    <script src="assets/third_party/feathericons/feather.min.js"></script>
     
     <style>
         #sidebar {
@@ -72,7 +72,7 @@
             flex-grow: 1;
         }
 
-        #sidebar .fa-angle-down {
+        #sidebar .angle-down {
             margin-left: auto;
         }
 
@@ -248,30 +248,20 @@
         };
 
         const links = { 
-            copropietario: [ 
-                { text: "Home",  
-                  childs: [ 
-                    { text: "Ir al inicio", link: "/home" }
-                  ], 
-                  icon: "fa-home" 
-                },
-                { text: "Boletas",  link: "/dashboard/boletas", icon: "fa-folder" },
-                { text: "Documentos",  link: "/dashboard/documentos", icon: "fa-clone" }
-            ],
             admin:  [
-                { text: "Panel de control", link: "/dashboard", icon: "fa-gears" },
+                { text: "Panel de control", link: "/dashboard", icon: "settings" },
                 { text: "Home",  
                   childs: [ 
                     { text: "Ir al inicio", link: "/home" }, 
                     { text: "Slider", link: "/dashboard/slider" }, 
                     { text: "Contacto", link: "/dashboard/contacto" }
                   ], 
-                  icon: "fa-home" 
+                  icon: "home" 
                 },
-                { text: "Mensajes",  link: "/dashboard/mensajes", icon: "fa-envelope" },  
-                { text: "Servicios",  link: "/dashboard/servicios", icon: "fa-bell" },
-                { text: "Posts",  link: "/dashboard/posts", icon: "fa-clone"},               
-                { text: "Usuarios",  link: "/dashboard/usuarios", icon: "fa-building" },
+                { text: "Mensajes",  link: "/dashboard/mensajes", icon: "mail" },  
+                { text: "Servicios",  link: "/dashboard/servicios", icon: "bell" },
+                { text: "Posts",  link: "/dashboard/posts", icon: "copy"},               
+                { text: "Usuarios",  link: "/dashboard/usuarios", icon: "briefcase" },
                 { text: "Archivos",  
                   childs: [ 
                     { text: "Boletas", link: "/dashboard/archivos/boletas" }, 
@@ -288,11 +278,13 @@
                     }, 
                     { text: "Legales", link: "/dashboard/archivos/legal"}
                   ], 
-                  icon: "fa-folder" 
+                  icon: "folder" 
                 },
-                { text: "Alex Bot",  link: "javascript:alert('Ciao, sono Alex bot!')", icon: "fa-robot" },
-            ]
+                { text: "Alex Bot",  link: "javascript:alert('Ciao, sono Alex bot!')", icon: "cpu" },
+            ],
+            // Other user-role's objects for rendering
         };
+       
 
         document.addEventListener('DOMContentLoaded', function() {
         const sidebar = document.getElementById('sidebar');
@@ -311,7 +303,7 @@
                     sidebarHTML += `
                         <li>
                             <a href="${link.link}" class="item leaf link">
-                                <i aria-hidden="true" class="v-icon fa ${link.icon} theme--light"></i>
+                                <i aria-hidden="true" class="v-icon" data-feather="${link.icon}"></i>
                                 <span class="item_node engravers">${link.text}</span>
                             </a>
                         </li>`;
@@ -319,9 +311,9 @@
                     sidebarHTML += `
                         <li>
                             <div class="item${hasChilds ? '' : ' leaf'}${link.link ? ' link' : ''}" ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} ${link.link ? `onclick="window.location.href='${link.link}'"` : ''}>
-                                <i aria-hidden="true" class="v-icon fa ${link.icon} theme--light"></i>
+                                <i aria-hidden="true" class="v-icon" data-feather="${link.icon}"></i>
                                 <span class="item_node engravers">${link.text}</span>
-                                ${hasChilds ? '<i class="fa fa-angle-down"></i>' : ''}
+                                ${hasChilds ? '<i class="angle-down" data-feather="chevron-down"></i>' : ''}
                             </div>`;
                     
                     if (hasChilds) {
@@ -345,7 +337,7 @@
         
         sidebar.innerHTML = `
             <div style="margin-top: 5em;">
-                <div role="list" class="v-list theme--light" style="margin-top: 3em; background-color: rgb(0, 0, 0); color: rgb(184, 199, 206);">
+                <div role="list" class="v-list" style="margin-top: 3em; background-color: rgb(0, 0, 0); color: rgb(184, 199, 206);">
                     ${generateSidebarLinks(links.admin)}
                 </div>
             </div>`;
@@ -379,7 +371,12 @@
             if (!conf.start_collapsed) {
                 toggleSidebar();
             }
+
+             // Feather icons
+            feather.replace();
         });
+
+       
     </script>
 </body>
 </html>
