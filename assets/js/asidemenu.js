@@ -13,9 +13,13 @@ class AsideMenu {
             this.handleEvents();
             this.handleResize();
 
-            // Inicializar el estado del sidebar según menuConfig.menu_starts_expanded
-            if (this.menuConfig.menu_starts_expanded) {
+            // Inicializar el estado del sidebar según menuConfig.starts_expanded
+            if (this.menuConfig.starts_expanded) {
                 this.toggleSidebar();
+
+                if (this.menuConfig.options_starts_expanded) {
+                    this.expandAllItems();
+                }
             }
 
             // Feather icons
@@ -117,5 +121,10 @@ class AsideMenu {
     collapseAllItems() {
         const collapseElements = this.sidebar.querySelectorAll('.collapse');
         collapseElements.forEach(el => el.classList.remove('show'));
+    }
+
+    expandAllItems(){
+        const collapseElements = this.sidebar.querySelectorAll('.collapse');
+        collapseElements.forEach(el => el.classList.add('show'));
     }
 }
