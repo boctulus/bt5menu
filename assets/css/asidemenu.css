@@ -200,7 +200,7 @@
 
 
 #sidebar {
-    width: 60px;
+    width: 70px; /* Aumentado para dar espacio a los iconos angle-right */
     left: 0;
     transition: width 0.3s;
 }
@@ -209,12 +209,28 @@
     width: 300px;
 }
 
-#sidebar .item_node,
+#sidebar .item_node {
+    display: none;
+}
+
+#sidebar.expanded .item_node {
+    display: inline-block;
+}
+
+#sidebar .angle-right,
+#sidebar .angle-down {
+    position: absolute;
+    right: 5px;
+}
+
 #sidebar .angle-down {
     display: none;
 }
 
-#sidebar.expanded .item_node,
+#sidebar.expanded .angle-right {
+    display: none;
+}
+
 #sidebar.expanded .angle-down {
     display: inline-block;
 }
@@ -228,7 +244,12 @@
 }
 
 #content {
-    margin-left: 60px;
+    margin-left: 70px; /* Ajustado para coincidir con el nuevo ancho del sidebar */
     transition: margin-left 0.3s;
 }
 
+@media (min-width: 992px) {
+    #content.shifted {
+        margin-left: 300px;
+    }
+}

@@ -57,7 +57,7 @@ class AsideMenu {
                         <div class="item${hasChilds ? '' : ' leaf'}${link.link ? ' link' : ''}" ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} ${link.link ? `onclick="window.location.href='${link.link}'"` : ''}>
                             <i aria-hidden="true" class="v-icon" data-feather="${link.icon}"></i>
                             <span class="item_node engravers">${link.text}</span>
-                            ${hasChilds ? '<i class="angle-down" data-feather="chevron-right"></i>' : ''}
+                            ${hasChilds ? '<i class="angle-right" data-feather="chevron-right"></i><i class="angle-down" data-feather="chevron-down"></i>' : ''}
                         </div>`;
 
                 if (hasChilds) {
@@ -89,17 +89,9 @@ class AsideMenu {
             this.content.classList.toggle('shifted');
         }
 
-        // Actualizar los íconos de flecha
-        const arrowIcons = this.sidebar.querySelectorAll('.angle-down');
-        arrowIcons.forEach(icon => {
-            if (this.sidebar.classList.contains('expanded')) {
-                icon.setAttribute('data-feather', 'chevron-down');
-            } else {
-                icon.setAttribute('data-feather', 'chevron-right');
-            }
-        });
         feather.replace();
     }
+
 
     handleEvents() {
         this.sidebarCollapse.addEventListener('click', () => this.toggleSidebar());
