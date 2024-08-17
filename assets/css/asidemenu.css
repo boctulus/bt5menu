@@ -4,7 +4,7 @@
     top: 0px;           
     left: -300px;
     width: 300px;
-    background-color: #000000;
+    background-color: rgba(0,0,0,0.95);
     color: #b8c7ce;
     transition: all 0.3s;
     overflow-y: auto;
