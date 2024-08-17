@@ -88,19 +88,24 @@ class AsideMenu {
     }
 
     toggleSidebar() {
+        const isMobileView = window.innerWidth < 992;
+        const sidebarExpanded = this.sidebar.classList.contains('expanded');
+    
+        // Alternar expansión del sidebar
         this.sidebar.classList.toggle('expanded');
-        this.sidebarCollapse.setAttribute('aria-expanded', this.sidebar.classList.contains('expanded'));
-
-        if (!this.sidebar.classList.contains('expanded')) {
+        this.sidebarCollapse.setAttribute('aria-expanded', sidebarExpanded);
+    
+        if (sidebarExpanded) {
             this.collapseAllItems();
         }
-
-        if (window.innerWidth >= 992) {
-            this.content.classList.toggle('shifted');
+    
+        // Controlar desplazamiento del contenido solo en pantallas grandes
+        if (!isMobileView) {
+            this.content.classList.toggle('shifted', this.sidebar.classList.contains('expanded'));
         }
-
+    
         feather.replace();
-    }
+    }    
 
     handleEvents() {
         this.sidebarCollapse.addEventListener('click', () => this.toggleSidebar());
@@ -108,15 +113,19 @@ class AsideMenu {
     }
 
     handleResize() {
-        if (window.innerWidth < 992) {
+        const isMobileView = window.innerWidth < 992;
+    
+        if (isMobileView) {
             this.content.classList.remove('shifted');
             if (this.sidebar.classList.contains('expanded')) {
                 this.sidebar.classList.remove('expanded');
                 this.sidebarCollapse.setAttribute('aria-expanded', 'false');
                 this.collapseAllItems();
             }
+        } else if (!this.sidebar.classList.contains('expanded')) {
+            this.sidebar.classList.add('collapsed');
         }
-    }
+    }   
 
     collapseAllItems() {
         const collapseElements = this.sidebar.querySelectorAll('.collapse');
