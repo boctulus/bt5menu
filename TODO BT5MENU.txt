@@ -1,20 +1,20 @@
 TODO BT5MENU
 ============
 
-https://github.com/boctulus/bt5menu_feather
+- Hacer que el sidebar no quede debajo del navbar sino encima.
 
-- Usar "feathericons"
+- Mover el "navbar toogle icon" adentro del componente del sidebar
 
-- Terminar el navbar (espcialmente la parte del login)
+- Hacer cambios al sidebar:
 
-- Ver demas detalles
+	Logo (circ., pequeno) --centrado--
 
-- Implementar:
+	[sign out] 			[<<]
 
-const conf = {
-    "menu_starts_expanded": true,
-    "menu_options_starts_expanded": true  /* implement */
-};
+	Avatar (circ., pequeno)
+
+	----------------------------------
+	Resto del sidebar como esta ahora
 
 
-file:///D:/Desktop/BT5%20MENU/one_file.html
+file:///D:/Desktop/BT5%20MENU/index.html

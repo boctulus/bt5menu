@@ -8,7 +8,7 @@
     color: #b8c7ce;
     transition: all 0.3s;
     overflow-y: auto;
-    z-index: 1050;
+    z-index: 9999;
     -webkit-user-select: none;  /* Safari */
     -moz-user-select: none;     /* Firefox */
     -ms-user-select: none;      /* Internet Explorer/Edge */
@@ -24,14 +24,6 @@
 
 #sidebar.expanded {
     left: 0;
-}
-
-#content {
-    transition: margin-left 0.3s;
-    padding-top: 80px !important;
-    background-color: #282828; /* or any other */
-    color: #F9F6EE;
-    min-height: 100vh;
 }
 
 .navbar-toggler {
@@ -196,12 +188,6 @@
     color: #cfa18b;
 }    
 
-@media (min-width: 992px) {
-    #content.shifted {
-        margin-left: 300px;
-    }
-}
-
 #sidebar {
     width: 85px; /* Aumentado para dar espacio a los iconos angle-right */
     left: 0;
@@ -247,7 +233,9 @@
 }
 
 #content {
-    margin-left: 70px; /* Ajustado para coincidir con el nuevo ancho del sidebar */
+    margin-left: 70px; /* Ajustado para coincidir con el ancho del sidebar */
+    padding-top: 80px;
+    min-height: 100vh;
     transition: margin-left 0.3s;
 }
 
