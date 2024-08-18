@@ -48,8 +48,8 @@ class AsideMenu {
                 for (const [key, value] of Object.entries(option.atts)) {
                     if (key === 'click') {
                         if (!hasChilds){
-                            additionalAtts += ` onclick="${value}"`;                        }
-                        
+                            additionalAtts += ` onclick="${value}"`;  
+                        }                        
                     } else {
                         additionalAtts += ` ${key}="${value}"`;
                     }
@@ -68,19 +68,37 @@ class AsideMenu {
                 additionalAtts = option.link ? `onclick="window.location.href='${option.link}'"` : '';
             }
 
-            sidebarHTML += `
-                <li>
-                    <div class="item${hasChilds ? '' : ' leaf'}${option.link ? ' link' : ''}" 
-                         ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} 
-                         ${additionalAtts}
-                         ${hasChilds ? 'onclick="this.closest(\'#sidebar\').classList.add(\'expanded\')"' : ''}
-                         >
-                        <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>
-                        <span class="item_node engravers">${option.text}</span>
-                        ${hasChilds ? 
-                            '<i class="angle-right" data-feather="chevron-right"></i><i class="angle-down" data-feather="chevron-down"></i>' : 
-                            extra}
-                    </div>`;
+            if (level === 0 && option.link && !hasChilds) {
+                let extra = '';
+                
+                if (option.html){
+                    extra = option.html;
+                } else if (option.counter){
+                    extra = `<span class="counter">${option.counter}</span>`;
+                }
+
+                sidebarHTML += `
+                    <li>
+                        <a href="${option.link}" class="item leaf link">
+                            <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>
+                            <span class="item_node engravers">${option.text}</span>
+                            ${extra}
+                        </a>`;
+            } else {
+                sidebarHTML += `
+                    <li>
+                        <div class="item${hasChilds ? '' : ' leaf'}${option.link ? ' link' : ''}" 
+                            ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} 
+                            ${additionalAtts}
+                            ${hasChilds ? 'onclick="this.closest(\'#sidebar\').classList.add(\'expanded\')"' : ''}
+                            >
+                            <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>
+                            <span class="item_node engravers">${option.text}</span>
+                            ${hasChilds ? 
+                                '<i class="angle-right" data-feather="chevron-right"></i><i class="angle-down" data-feather="chevron-down"></i>' : 
+                                extra}
+                        </div>`;
+            }
     
             if (hasChilds) {
                 sidebarHTML += `
