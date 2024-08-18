@@ -1,6 +1,13 @@
 const menu_items = { 
     admin:  [
-        { text: "Exam list", link: "/dashboard/exam-list", icon: "heart", counter: 99, /* "separator": true */ },
+        { 
+          text: "Exam list", 
+          link: "/dashboard/exam-list", 
+          icon: "heart", 
+          counter: 99, 
+          /* html: "<span class=\"counter\">16</span>" */
+          /* "separator": true */ 
+        },
         { text: "Fast reporting", link: "/dashboard/fast-reporting", icon: "zap" },
         { text: "Patients", link: "/dashboard/patients", icon: "users" },
         { text: "Administration",

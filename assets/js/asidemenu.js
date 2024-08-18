@@ -43,12 +43,20 @@ class AsideMenu {
             const id = `menu-${link.text.replace(/\s+/g, '-').toLowerCase()}`;
 
             if (level === 0 && link.link && !hasChilds) {
+                let extra = '';
+                
+                if (link.html){
+                    extra = link.html;
+                } else if (link.counter){
+                    extra = `<span class="counter">${link.counter}</span>`;
+                }
+
                 sidebarHTML += `
                     <li>
                         <a href="${link.link}" class="item leaf link">
                             <i aria-hidden="true" class="v-icon" data-feather="${link.icon}"></i>
                             <span class="item_node engravers">${link.text}</span>
-                            ${link.counter ? `<span class="counter">${link.counter}</span>` : ''}
+                            ${extra}
                         </a>
                     </li>`;
             } else {
@@ -134,5 +142,17 @@ class AsideMenu {
     expandAllItems(){
         const collapseElements = this.sidebar.querySelectorAll('.collapse');
         collapseElements.forEach(el => el.classList.add('show'));
+    }
+
+    setCounter(val){
+        if (Number.isInteger(val)){
+            if (val>99){
+                val = 99;
+            }
+
+            val = '' + val;
+        }
+        
+        document.querySelector('.counter').innerHTML = val
     }
 }
