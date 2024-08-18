@@ -1,8 +1,6 @@
 TODO BT5MENU
 ============
 
-- Hacer que el sidebar no quede debajo del navbar sino encima.
-
 - Mover el "navbar toogle icon" adentro del componente del sidebar
 
 - Hacer cambios al sidebar:
