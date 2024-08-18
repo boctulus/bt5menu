@@ -1,11 +1,16 @@
 const menu_items = { 
     admin:  [
+        { text: "Sign out", 
+          link: "javascript:alert('signing out')", 
+          icon: "log-out",
+          secondary_icon: "<span data-feather='chevrons-right' style='position: absolute; right: 10px;'></span>"
+        },
         { 
           text: "Exam list", 
           link: "/dashboard/exam-list", 
           icon: "heart", 
           counter: 99, 
-          /* html: "<span class=\"counter\">16</span>" */
+          /* secondary_icon: "<span class=\"counter\">16</span>" */
           /* "separator": true */ 
         },
         { text: "Fast reporting", link: "/dashboard/fast-reporting", icon: "zap" },

@@ -57,8 +57,8 @@ class AsideMenu {
             } 
     
             let extra = '';
-            if (option.html) {
-                extra = option.html;
+            if (option.secondary_icon) {
+                extra = option.secondary_icon;
             } else if (option.counter) {
                 extra = `<span class="counter">${option.counter}</span>`;
             }
@@ -71,8 +71,8 @@ class AsideMenu {
             if (level === 0 && option.link && !hasChilds) {
                 let extra = '';
                 
-                if (option.html){
-                    extra = option.html;
+                if (option.secondary_icon){
+                    extra = option.secondary_icon;
                 } else if (option.counter){
                     extra = `<span class="counter">${option.counter}</span>`;
                 }
