@@ -20,10 +20,7 @@ class AsideMenu {
                 if (this.menuConfig.options_starts_expanded) {
                     this.expandAllItems();
                 }
-            }
-
-            // Feather icons
-            feather.replace();
+            }            
         });
     }
 
@@ -106,7 +103,7 @@ class AsideMenu {
             this.content.classList.toggle('shifted', this.sidebar.classList.contains('expanded'));
         }
     
-        feather.replace();
+        // feather.replace();
     }    
 
     handleEvents() {
