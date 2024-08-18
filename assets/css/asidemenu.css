@@ -8,7 +8,7 @@
     color: #b8c7ce;
     transition: all 0.3s;
     overflow-y: auto;
-    z-index: 9999;
+    z-index: 1000;
     -webkit-user-select: none;  /* Safari */
     -moz-user-select: none;     /* Firefox */
     -ms-user-select: none;      /* Internet Explorer/Edge */
@@ -26,15 +26,17 @@
     left: 0;
 }
 
+.navbar {
+    height: 50px;
+    padding-left: 300px;
+    z-index: 1055;
+}
+
 .navbar-toggler {
     position: fixed;
     right: 10px;
-    top: 10px;
+    top: 5px;
     z-index: 1060;
-}
-
-.navbar {
-    z-index: 1055;
 }
 
 #sidebar .item {
