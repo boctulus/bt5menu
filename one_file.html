@@ -17,12 +17,12 @@
     <!-- AsideMenu -->
     <script src="assets/js/asidemenu.js"></script>
 
-    <!-- Pulled from Backend, probably using Ajax -->
+    <!-- Pulled from Backend, probably using Ajax request (included here as part of a demo) -->
     <script src="assets/js/menu_items.js"></script>
 </head>
 <body>
 
-    <!-- Navbar con el icono de hamburguesa -->
+    <!-- Navbar with hamburger icon -->
     <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <button id="sidebarCollapse" class="navbar-toggler" type="button">
@@ -34,7 +34,7 @@
 
     <!-- Sidebar -->
     <div id="sidebar" class="collapsed">        
-        <!-- El contenido será generado dinámicamente -->
+        <!-- Content to be generated dynamically -->
     </div>
 
     <!-- Content -->
@@ -54,7 +54,7 @@
     <script>
         const menu_config = {
             "starts_expanded": false,
-            "options_starts_expanded": true,  /* it has only effect if starts_expanded is true */
+            "options_starts_expanded": false,  /* it has only effect if starts_expanded is true */
             "role": "admin"
         };
 
