@@ -37,59 +37,67 @@ class AsideMenu {
 
     generateSidebarLinks(menuItems, level = 0) {
         let sidebarHTML = `<ul class="list-unstyled${level > 0 ? ' treeview-menu' : ''}">`;
-
-        menuItems.forEach((link) => {
-            const hasChilds = link.childs && link.childs.length > 0;
-            const id = `menu-${link.text.replace(/\s+/g, '-').toLowerCase()}`;
-
-            if (level === 0 && link.link && !hasChilds) {
-                let extra = '';
-                
-                if (link.html){
-                    extra = link.html;
-                } else if (link.counter){
-                    extra = `<span class="counter">${link.counter}</span>`;
+    
+        menuItems.forEach((option) => {
+            const hasChilds = option.childs && option.childs.length > 0;
+            const id = `menu-${option.text.replace(/\s+/g, '-').toLowerCase()}`;
+    
+            // Generar string de atributos adicionales
+            let additionalAtts = '';
+            if (option.atts) {
+                for (const [key, value] of Object.entries(option.atts)) {
+                    if (key === 'click') {
+                        if (!hasChilds){
+                            additionalAtts += ` onclick="${value}"`;                        }
+                        
+                    } else {
+                        additionalAtts += ` ${key}="${value}"`;
+                    }
                 }
-
-                sidebarHTML += `
-                    <li>
-                        <a href="${link.link}" class="item leaf link">
-                            <i aria-hidden="true" class="v-icon" data-feather="${link.icon}"></i>
-                            <span class="item_node engravers">${link.text}</span>
-                            ${extra}
-                        </a>
-                    </li>`;
-            } else {
-                sidebarHTML += `
-                    <li>
-                        <div class="item${hasChilds ? '' : ' leaf'}${link.link ? ' link' : ''}" 
-                             ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} 
-                             ${link.link ? `onclick="window.location.href='${link.link}'"` : ''}
-                             ${hasChilds ? 'onclick="this.closest(\'#sidebar\').classList.add(\'expanded\')"' : ''}>
-                            <i aria-hidden="true" class="v-icon" data-feather="${link.icon}"></i>
-                            <span class="item_node engravers">${link.text}</span>
-                            ${hasChilds ? 
-                                '<i class="angle-right" data-feather="chevron-right"></i><i class="angle-down" data-feather="chevron-down"></i>' : 
-                                (link.counter ? `<span class="counter">${link.counter}</span>` : '')}
-                        </div>`;
-
-                if (hasChilds) {
-                    sidebarHTML += `
-                        <div class="collapse" id="${id}">
-                            ${this.generateSidebarLinks(link.childs, level + 1)}
-                        </div>`;
-                }
-
-                sidebarHTML += '</li>';
+            } 
+    
+            let extra = '';
+            if (option.html) {
+                extra = option.html;
+            } else if (option.counter) {
+                extra = `<span class="counter">${option.counter}</span>`;
+            }
+    
+            // Si no hay un onclick personalizado y hay un link, usamos el comportamiento por defecto
+            if (!option.atts || !option.atts.click) {
+                additionalAtts = option.link ? `onclick="window.location.href='${option.link}'"` : '';
             }
 
-            if (link.separator !== undefined && link.separator) {
+            sidebarHTML += `
+                <li>
+                    <div class="item${hasChilds ? '' : ' leaf'}${option.link ? ' link' : ''}" 
+                         ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} 
+                         ${additionalAtts}
+                         ${hasChilds ? 'onclick="this.closest(\'#sidebar\').classList.add(\'expanded\')"' : ''}
+                         >
+                        <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>
+                        <span class="item_node engravers">${option.text}</span>
+                        ${hasChilds ? 
+                            '<i class="angle-right" data-feather="chevron-right"></i><i class="angle-down" data-feather="chevron-down"></i>' : 
+                            extra}
+                    </div>`;
+    
+            if (hasChilds) {
+                sidebarHTML += `
+                    <div class="collapse" id="${id}">
+                        ${this.generateSidebarLinks(option.childs, level + 1)}
+                    </div>`;
+            }
+    
+            sidebarHTML += '</li>';
+    
+            if (option.separator !== undefined && option.separator) {
                 if (level === 0) {
                     sidebarHTML += '<li role="presentation"><hr role="separator" aria-orientation="horizontal" class="dropdown-divider"></li>';
                 }
             }
         });
-
+    
         sidebarHTML += '</ul>';
         return sidebarHTML;
     }
@@ -110,8 +118,6 @@ class AsideMenu {
         if (!isMobileView) {
             this.content.classList.toggle('shifted', this.sidebar.classList.contains('expanded'));
         }
-    
-        // feather.replace();
     }    
 
     handleEvents() {

@@ -34,7 +34,14 @@ const menu_items = {
         },
         { text: "Integration Layer",  
           childs: [ 
-            { text: "Item 1", link: "/dashboard/integration-layer/item1", icon: "layers" }
+            { 
+              text: "Item 1", 
+              icon: "layers",
+              atts: {
+                "id": "my_id",
+                "click": "my_callback(this);"
+              }
+             }
           ],
           icon: "layers"
         },
