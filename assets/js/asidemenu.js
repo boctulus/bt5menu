@@ -4,6 +4,7 @@ class AsideMenu {
         this.menuConfig = menuConfig;
         this.asidemenu = document.getElementById('asidemenu');
         this.content = document.getElementById('content');
+        this.sidebar = document.getElementById('sidebar');
     }
 
     init() {
@@ -43,9 +44,12 @@ class AsideMenu {
         let sidebarHTML = `<ul class="list-unstyled${level > 0 ? ' treeview-menu' : ''}">`;
     
         menuItems.forEach((option) => {
-            if (option.html) {
+            if (option.html || option.html_compact) {
                 // Si el elemento tiene un bloque HTML directo, lo insertamos tal cual
-                sidebarHTML += `<li>${option.html}</li>`;
+                sidebarHTML += `<li class="custom-html-container">
+                    ${option.html ? `<div class="expanded-html">${option.html}</div>` : ''}
+                    ${option.html_compact ? `<div class="compact-html">${option.html_compact}</div>` : ''}
+                </li>`;
             } else {
 
                 const hasChilds = option.childs && option.childs.length > 0;
@@ -149,6 +153,8 @@ class AsideMenu {
         if (!isMobileView) {
             this.content.classList.toggle('shifted', this.asidemenu.classList.contains('expanded'));
         }
+
+        this.updateCustomHtmlVisibility();
     }
 
     handleEvents() {
@@ -170,6 +176,21 @@ class AsideMenu {
             this.asidemenu.classList.add('collapsed');
             sidebarElement.classList.remove('expanded');
         }
+
+        this.updateCustomHtmlVisibility();
+    }
+
+    updateCustomHtmlVisibility() {
+        const isExpanded = this.sidebar.classList.contains('expanded');
+        const customHtmlContainers = document.querySelectorAll('.custom-html-container');
+        
+        customHtmlContainers.forEach(container => {
+            const expandedHtml = container.querySelector('.expanded-html');
+            const compactHtml = container.querySelector('.compact-html');
+            
+            if (expandedHtml) expandedHtml.style.display = isExpanded ? 'block' : 'none';
+            if (compactHtml) compactHtml.style.display = isExpanded ? 'none' : 'block';
+        });
     }
 
     collapseAllItems() {

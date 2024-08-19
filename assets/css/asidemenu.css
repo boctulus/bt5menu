@@ -279,3 +279,15 @@
 }
 
 
+.custom-html-container .expanded-html,
+.custom-html-container .compact-html {
+    display: none;
+}
+
+#sidebar.expanded .custom-html-container .expanded-html {
+    display: block;
+}
+
+#sidebar:not(.expanded) .custom-html-container .compact-html {
+    display: block;
+}
