@@ -98,7 +98,7 @@ class AsideMenu {
                         <div class="item${hasChilds ? '' : ' leaf'}${option.link ? ' link' : ''}" 
                             ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} 
                             ${additionalAtts}
-                            ${hasChilds ? 'onclick="this.closest(\'#asidemenu\').classList.add(\'expanded\')"' : ''}
+                            ${hasChilds ? 'onclick="this.closest(\'#asidemenu\').classList.add(\'expanded\'); document.getElementById(\'sidebar\').classList.add(\'expanded\');"' : ''}
                         >
                             ${!hasChilds && clickEvent ? `<span class="clickable-area" onclick="${clickEvent}">` : ''}
                             <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>

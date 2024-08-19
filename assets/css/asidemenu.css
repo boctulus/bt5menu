@@ -11,15 +11,6 @@
     z-index: 1060;
 }
 
-#sidebar {
-    width: 85px; /* Ancho inicial */
-    transition: width 0.3s; /* Añade transición */
-}
-
-#sidebar.expanded {
-    width: 300px; /* Ancho expandido */
-}
-
 #asidemenu {
     height: 102vh;
     position: fixed;
@@ -282,6 +273,15 @@
 .custom-html-container .expanded-html,
 .custom-html-container .compact-html {
     display: none;
+}
+
+#sidebar {
+    width: 85px; /* Ancho inicial */
+    transition: width 0.3s; /* Añade transición */
+}
+
+#sidebar.expanded {
+    width: 300px; /* Ancho expandido */
 }
 
 #sidebar.expanded .custom-html-container .expanded-html {
