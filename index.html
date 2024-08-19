@@ -113,19 +113,39 @@
         */
 
         const menu = new AsideMenu(menu_items, menu_config);
-
-        /*
+        
         menu.setOnExpandHandler(() => {
-            console.log('The sidebar has been expanded');a
+            const nameElement = document.querySelector('.name');
+
+            // Remover d-none para hacer visible el contenedor
+            nameElement.classList.remove('d-none');
+
+            // Agregar la clase reveal-text y show para la animación
+            nameElement.classList.add('reveal-text');
+            
+            setTimeout(() => {
+                nameElement.classList.add('show');
+            }, 10);  // El pequeño delay permite que la transición funcione correctamente
         });
+        
         
         menu.setOnCollapseHandler(() => {
-            console.log('The sidebar has been collapsed');
+            const nameElement = document.querySelector('.name');
+            // Remover la clase 'show' para iniciar la animación de cierre
+            nameElement.classList.remove('show');
+            
+            // Esperar a que termine la animación antes de ocultar completamente
+            setTimeout(() => {
+                // Remover la clase reveal-text
+                nameElement.classList.remove('reveal-text');
+                // Agregar d-none para ocultar el contenedor
+                nameElement.classList.add('d-none');
+            }, 600);  // 600ms es la duración de la transición en el CSS
         });
-        */
+        
         
         menu.init();      
-        
+
         
         // Feather icons
         document.addEventListener('DOMContentLoaded', () => {            

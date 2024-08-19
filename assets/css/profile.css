@@ -9,6 +9,7 @@
     position: relative;
     width: 40px;
     height: 40px;
+    flex-shrink: 0;
     margin-right: 10px;
 }
 
@@ -40,4 +41,16 @@
 .name {
     font-size: 14px;
     color: #b8c7ce;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.reveal-text {
+    display: inline-block;
+    max-width: 0;
+    transition: max-width 0.6s ease-in-out;
+}
+
+.reveal-text.show {
+    max-width: 200px; /* Ajusta este valor según el ancho máximo que necesites */
 }
