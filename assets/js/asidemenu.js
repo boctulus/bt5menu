@@ -57,17 +57,18 @@ class AsideMenu {
         
                 // Generar string de atributos adicionales
                 let additionalAtts = '';
+                let clickEvent = '';
                 if (option.atts) {
                     for (const [key, value] of Object.entries(option.atts)) {
                         if (key === 'click') {
-                            if (!hasChilds){
-                                additionalAtts += ` onclick="${value}"`;  
-                            }                        
+                            if (!hasChilds) {
+                                clickEvent = value;
+                            }
                         } else {
                             additionalAtts += ` ${key}="${value}"`;
                         }
                     }
-                } 
+                }
         
                 let extra = '';
                 if (option.secondary_icon) {
@@ -83,14 +84,16 @@ class AsideMenu {
                 
                 // console.log('Extra', extra);
 
-                if (level === 0 && option.link && !hasChilds) {
+                if (level === 0 && !hasChilds) {
                     sidebarHTML += `
                         <li>
-                            <a href="${option.link}" class="item leaf link">
-                                <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>
-                                <span class="item_node engravers">${option.text}</span>
+                            <div class="item leaf${option.link ? ' link' : ''}" ${additionalAtts}>
+                                <span class="clickable-area" onclick="${clickEvent}">
+                                    <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>
+                                    <span class="item_node engravers">${option.text}</span>
+                                </span>
                                 ${extra}
-                            </a>`;
+                            </div>`;
                 } else {
                     sidebarHTML += `
                         <li>
@@ -98,9 +101,11 @@ class AsideMenu {
                                 ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} 
                                 ${additionalAtts}
                                 ${hasChilds ? 'onclick="this.closest(\'#asidemenu\').classList.add(\'expanded\')"' : ''}
-                                >
+                            >
+                                ${!hasChilds && clickEvent ? `<span class="clickable-area" onclick="${clickEvent}">` : ''}
                                 <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>
                                 <span class="item_node engravers">${option.text}</span>
+                                ${!hasChilds && clickEvent ? `</span>` : ''}
                                 ${hasChilds ? 
                                     '<i class="angle-right" data-feather="chevron-right"></i><i class="angle-down" data-feather="chevron-down"></i>' : 
                                     extra}
