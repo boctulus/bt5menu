@@ -151,22 +151,12 @@ class AsideMenu {
 
     toggleSidebar() {
         const isMobileView = window.innerWidth < 992;
-        const sidebarElement = document.getElementById('sidebar');
         const wasExpanded = this.asidemenu.classList.contains('expanded');
     
-        // Alternar expansión del asidemenu y sidebar
-        this.asidemenu.classList.toggle('expanded');
-        sidebarElement.classList.toggle('expanded');
-    
         if (wasExpanded) {
-            this.collapseAllItems();
-            if (this.onCollapseCallback) {
-                this.onCollapseCallback();
-            }
+            this.collapseSidebar();
         } else {
-            if (this.onExpandCallback) {
-                this.onExpandCallback();
-            }
+            this.expandSidebar();
         }
     
         // Controlar desplazamiento del contenido solo en pantallas grandes
@@ -183,23 +173,15 @@ class AsideMenu {
 
     handleResize() {
         const isMobileView = window.innerWidth < 992;
-        const sidebarElement = document.getElementById('sidebar');
-    
+        
         if (isMobileView) {
             this.content.classList.remove('shifted');
             if (this.asidemenu.classList.contains('expanded')) {
-                this.asidemenu.classList.remove('expanded');
-                sidebarElement.classList.remove('expanded');
-                this.collapseAllItems();
-                
-                // Disparar el hook de colapso
-                if (this.onCollapseCallback) {
-                    this.onCollapseCallback();
-                }
+                this.collapseSidebar();
             }
         } else if (!this.asidemenu.classList.contains('expanded')) {
             this.asidemenu.classList.add('collapsed');
-            sidebarElement.classList.remove('expanded');
+            this.sidebar.classList.remove('expanded');
         }
 
         this.updateCustomHtmlVisibility();
@@ -229,14 +211,27 @@ class AsideMenu {
         this.updateCustomHtmlVisibility();
     }
 
-    collapseAllItems() {
-        const collapseElements = this.asidemenu.querySelectorAll('.collapse');
-        collapseElements.forEach(el => el.classList.remove('show'));
+    collapseSidebar() {
+        if (this.asidemenu.classList.contains('expanded')) {
+            this.asidemenu.classList.remove('expanded');
+            this.sidebar.classList.remove('expanded');
+            this.collapseAllItems();
+            
+            if (this.onCollapseCallback) {
+                this.onCollapseCallback();
+            }
+        }
+        this.updateCustomHtmlVisibility();
     }
 
     expandAllItems(){
         const collapseElements = this.asidemenu.querySelectorAll('.collapse');
         collapseElements.forEach(el => el.classList.add('show'));
+    }
+
+    collapseAllItems() {
+        const collapseElements = this.asidemenu.querySelectorAll('.collapse');
+        collapseElements.forEach(el => el.classList.remove('show'));
     }
 
     setCounter(val){
