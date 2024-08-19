@@ -8,6 +8,20 @@ const menu_items = {
           icon: "log-out",
           secondary_icon: "<span onclick=\"event.stopPropagation(); menu.toggleSidebar()\" data-feather='chevrons-right' style='position: absolute; right: 10px;'></span>"
         },
+        {
+          html: `
+          <!-- Profile card -->
+          <div class="profile">
+            <div class="image-container">
+              <img src="assets/img/avatar.png" alt="Profile picture" class="profile-image">
+              <span class="edit-icon">
+                <i data-feather="edit-2"></i>
+              </span>
+            </div>
+            <span class="name d-none">Francesco Buonvicino</span>
+          </div>
+          `
+        },
         { 
           text: "Exam list", 
           link: "/dashboard/exam-list", 
@@ -65,8 +79,8 @@ const menu_items = {
 
     // Other user-role's objects for rendering. E.g.
     manager: [
-        { text: "Exam list", link: "/dashboard/exam-list", icon: "heart", /* "separator": true */ },
-        { text: "Fast reporting", link: "/dashboard/fast-reporting", icon: "zap" },
-        { text: "Info", link: "javascript:alert('System is operational')", icon: "info" }
+      {},
+      {},
+      {},
     ]
 };       

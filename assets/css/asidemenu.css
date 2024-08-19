@@ -1,3 +1,25 @@
+.navbar {
+    height: 60px;
+    padding-left: 300px;
+    z-index: 1055;
+}
+
+.navbar-toggler {
+    position: fixed;
+    right: 10px;
+    top: 5px;
+    z-index: 1060;
+}
+
+#sidebar {
+    width: 85px; /* Ancho inicial */
+    transition: width 0.3s; /* Añade transición */
+}
+
+#sidebar.expanded {
+    width: 300px; /* Ancho expandido */
+}
+
 #asidemenu {
     height: 102vh;
     position: fixed;
@@ -23,19 +45,6 @@
 
 #asidemenu.expanded {
     left: 0;
-}
-
-.navbar {
-    height: 60px;
-    padding-left: 300px;
-    z-index: 1055;
-}
-
-.navbar-toggler {
-    position: fixed;
-    right: 10px;
-    top: 5px;
-    z-index: 1060;
 }
 
 #asidemenu .item {
@@ -270,12 +279,3 @@
 }
 
 
-
-#sidebar {
-    width: 85px; /* Ancho inicial */
-    transition: width 0.3s; /* Añade transición */
-}
-
-#sidebar.expanded {
-    width: 300px; /* Ancho expandido */
-}
