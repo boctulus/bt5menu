@@ -1,9 +1,12 @@
 const menu_items = { 
     admin:  [
         { text: "Sign out", 
-          link: "javascript:alert('signing out')", 
+          atts: {
+            "id": "sign_our",
+            "click": "my_callback(this);"
+          },
           icon: "log-out",
-          secondary_icon: "<span data-feather='chevrons-right' style='position: absolute; right: 10px;'></span>"
+          secondary_icon: "<span onclick=\"event.stopPropagation(); alert('¡Hola desde el botón!')\" data-feather='chevrons-right' style='position: absolute; right: 10px;'></span>"
         },
         { 
           text: "Exam list", 

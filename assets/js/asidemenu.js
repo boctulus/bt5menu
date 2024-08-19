@@ -67,6 +67,8 @@ class AsideMenu {
             if (!option.atts || !option.atts.click) {
                 additionalAtts = option.link ? `onclick="window.location.href='${option.link}'"` : '';
             }
+            
+            // console.log('Extra', extra);
 
             if (level === 0 && option.link && !hasChilds) {
                 let extra = '';
