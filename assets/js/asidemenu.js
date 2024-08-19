@@ -84,32 +84,30 @@ class AsideMenu {
                 
                 // console.log('Extra', extra);
 
-                if (level === 0 && !hasChilds) {
+                if (level === 0 && option.link && !hasChilds) {
                     sidebarHTML += `
                         <li>
-                            <div class="item leaf${option.link ? ' link' : ''}" ${additionalAtts}>
-                                <span class="clickable-area" onclick="${clickEvent}">
-                                    <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>
-                                    <span class="item_node engravers">${option.text}</span>
-                                </span>
-                                ${extra}
-                            </div>`;
-                } else {
-                    sidebarHTML += `
-                        <li>
-                            <div class="item${hasChilds ? '' : ' leaf'}${option.link ? ' link' : ''}" 
-                                ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} 
-                                ${additionalAtts}
-                                ${hasChilds ? 'onclick="this.closest(\'#asidemenu\').classList.add(\'expanded\')"' : ''}
-                            >
-                                ${!hasChilds && clickEvent ? `<span class="clickable-area" onclick="${clickEvent}">` : ''}
+                            <a href="${option.link}" class="item leaf link">
                                 <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>
                                 <span class="item_node engravers">${option.text}</span>
-                                ${!hasChilds && clickEvent ? `</span>` : ''}
-                                ${hasChilds ? 
-                                    '<i class="angle-right" data-feather="chevron-right"></i><i class="angle-down" data-feather="chevron-down"></i>' : 
-                                    extra}
-                            </div>`;
+                                ${extra}
+                            </a>`;
+                } else {
+                    sidebarHTML += `
+                    <li>
+                        <div class="item${hasChilds ? '' : ' leaf'}${option.link ? ' link' : ''}" 
+                            ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} 
+                            ${additionalAtts}
+                            ${hasChilds ? 'onclick="this.closest(\'#asidemenu\').classList.add(\'expanded\')"' : ''}
+                        >
+                            ${!hasChilds && clickEvent ? `<span class="clickable-area" onclick="${clickEvent}">` : ''}
+                            <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>
+                            <span class="item_node engravers">${option.text}</span>
+                            ${!hasChilds && clickEvent ? `</span>` : ''}
+                            ${hasChilds ? 
+                                '<i class="angle-right" data-feather="chevron-right"></i><i class="angle-down" data-feather="chevron-down"></i>' : 
+                                extra}
+                        </div>`;
                 }
         
                 if (hasChilds) {
