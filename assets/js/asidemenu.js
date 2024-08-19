@@ -2,7 +2,7 @@ class AsideMenu {
     constructor(menuItems, menuConfig) {
         this.menuItems = menuItems;
         this.menuConfig = menuConfig;
-        this.sidebar = document.getElementById('sidebar');
+        this.asidemenu = document.getElementById('asidemenu');
         this.content = document.getElementById('content');
     }
 
@@ -12,7 +12,7 @@ class AsideMenu {
             this.handleEvents();
             this.handleResize();
 
-            // Inicializar el estado del sidebar según menuConfig.starts_expanded
+            // Inicializar el estado del asidemenu según menuConfig.starts_expanded
             if (this.menuConfig.starts_expanded) {
                 this.toggleSidebar();
 
@@ -26,9 +26,9 @@ class AsideMenu {
     renderMenu() {
         const margin_top = this.menuConfig.margin_top != 'undefined' ?  this.menuConfig.margin_top : "0px";
 
-        this.sidebar.innerHTML = `
+        this.asidemenu.innerHTML = `
             <div id="list-wrapper">
-                <div role="list" class="v-list" background-color: rgb(0, 0, 0); color: rgb(184, 199, 206);">
+                <div role="list" class="v-list">
                     ${this.generateSidebarLinks(this.menuItems[this.menuConfig.role])}
                 </div>
             </div>`;
@@ -91,7 +91,7 @@ class AsideMenu {
                         <div class="item${hasChilds ? '' : ' leaf'}${option.link ? ' link' : ''}" 
                             ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} 
                             ${additionalAtts}
-                            ${hasChilds ? 'onclick="this.closest(\'#sidebar\').classList.add(\'expanded\')"' : ''}
+                            ${hasChilds ? 'onclick="this.closest(\'#asidemenu\').classList.add(\'expanded\')"' : ''}
                             >
                             <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>
                             <span class="item_node engravers">${option.text}</span>
@@ -123,10 +123,10 @@ class AsideMenu {
 
     toggleSidebar() {
         const isMobileView = window.innerWidth < 992;
-        const sidebarExpanded = this.sidebar.classList.contains('expanded');
+        const sidebarExpanded = this.asidemenu.classList.contains('expanded');
     
-        // Alternar expansión del sidebar
-        this.sidebar.classList.toggle('expanded');
+        // Alternar expansión del asidemenu
+        this.asidemenu.classList.toggle('expanded');
     
         if (sidebarExpanded) {
             this.collapseAllItems();
@@ -134,7 +134,7 @@ class AsideMenu {
     
         // Controlar desplazamiento del contenido solo en pantallas grandes
         if (!isMobileView) {
-            this.content.classList.toggle('shifted', this.sidebar.classList.contains('expanded'));
+            this.content.classList.toggle('shifted', this.asidemenu.classList.contains('expanded'));
         }
     }    
 
@@ -147,22 +147,22 @@ class AsideMenu {
     
         if (isMobileView) {
             this.content.classList.remove('shifted');
-            if (this.sidebar.classList.contains('expanded')) {
-                this.sidebar.classList.remove('expanded');
+            if (this.asidemenu.classList.contains('expanded')) {
+                this.asidemenu.classList.remove('expanded');
                 this.collapseAllItems();
             }
-        } else if (!this.sidebar.classList.contains('expanded')) {
-            this.sidebar.classList.add('collapsed');
+        } else if (!this.asidemenu.classList.contains('expanded')) {
+            this.asidemenu.classList.add('collapsed');
         }
     }   
 
     collapseAllItems() {
-        const collapseElements = this.sidebar.querySelectorAll('.collapse');
+        const collapseElements = this.asidemenu.querySelectorAll('.collapse');
         collapseElements.forEach(el => el.classList.remove('show'));
     }
 
     expandAllItems(){
-        const collapseElements = this.sidebar.querySelectorAll('.collapse');
+        const collapseElements = this.asidemenu.querySelectorAll('.collapse');
         collapseElements.forEach(el => el.classList.add('show'));
     }
 

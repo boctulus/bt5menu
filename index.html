@@ -14,11 +14,11 @@
     <!-- Feather -->
     <script src="assets/third_party/feathericons/feather.min.js"></script>
 
-    <!-- AsideMenu -->
-    <script src="assets/js/asidemenu.js"></script>
-
     <!-- Pulled from Backend, probably using Ajax request (included here as part of a demo) -->
     <script src="assets/js/menu_items.js"></script>
+
+    <!-- AsideMenu -->
+    <script src="assets/js/asidemenu.js"></script>
 
     <style>
         /*
@@ -33,16 +33,30 @@
             min-height: 100vh;
         }
 
-        #sidebar .counter {
+        #sidebar {            
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 6000;
+            height: 102vh;
+            background-color: rgba(0,0,0);
+            width: 86px;
+        }
+
+        #asidemenu .counter {
             background-color: red; 
             color: white;
         }
+
+        .logo {
+            width: 60px;
+            margin-left: 13px;
+        }
     </style>
 </head>
-<body>    
-
+<body>
     <!-- Navbar demo -->
-    <nav class="navbar bg-body-tertiary fixed-top">
+    <nav class="navbar navbar-dark bg-primary fixed-top">
         <div class="container-fluid">
           <a class="navbar-brand"></a>
           <form class="d-flex" role="search">
@@ -50,13 +64,16 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
         </div>
-      </nav>
+    </nav>
 
     <!-- Sidebar (Aside Menu) -->
-    <div id="sidebar" class="collapsed">        
-        <!-- Content to be generated dynamically -->
-    </div>
-
+    <aside id="sidebar">      
+        <img class="logo" src="assets/img/logo-thin.png"/>   
+        <div id="asidemenu" class="collapsed">        
+            <!-- Content to be generated dynamically -->
+        </div>    
+    </aside>
+    
     <!-- Content -->
     <div id="content" class="p-4">
         <div class="container">

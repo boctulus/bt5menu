@@ -1,11 +1,10 @@
-#sidebar {
+#asidemenu {
     height: 102vh;
     position: fixed;
     top: 0px;           
-    left: -300px;
     width: 300px;
     color: #b8c7ce;
-    background-color: rgba(0,0,0);
+    background-color: transparent;
     z-index: 5000;
     transition: all 0.3s;
     overflow-y: auto;    
@@ -15,19 +14,19 @@
     user-select: none;          /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }           
 
-#sidebar a {
+#asidemenu a {
     -webkit-user-select: text;
     -moz-user-select: text;
     -ms-user-select: text;
     user-select: text;
 }
 
-#sidebar.expanded {
+#asidemenu.expanded {
     left: 0;
 }
 
 .navbar {
-    height: 50px;
+    height: 60px;
     padding-left: 300px;
     z-index: 1055;
 }
@@ -39,36 +38,36 @@
     z-index: 1060;
 }
 
-#sidebar .item {
+#asidemenu .item {
     display: flex;
     align-items: center;
     padding: 10px 15px;
     cursor: pointer;
 }
 
-#sidebar .item i {
+#asidemenu .item i {
     color: #cfa18b;
     margin-right: 10px;
 }
 
-#sidebar .item_node {
+#asidemenu .item_node {
     flex-grow: 1;
 }
 
-#sidebar .angle-down {
+#asidemenu .angle-down {
     margin-left: auto;
 }
 
-#sidebar .treeview-menu {
+#asidemenu .treeview-menu {
     list-style-type: none;
     padding-left: 30px;
 }
 
-#sidebar .treeview-menu .treeview-menu {
+#asidemenu .treeview-menu .treeview-menu {
     padding-left: 40px; 
 }
 
-#sidebar .treeview-menu .sub {
+#asidemenu .treeview-menu .sub {
     display: flex;
     align-items: center;
     padding: 5px 0;
@@ -76,11 +75,11 @@
     text-decoration: none;
 }
 
-#sidebar .treeview-menu .sub i {
+#asidemenu .treeview-menu .sub i {
     margin-right: 10px;
 }
 
-#sidebar .link {
+#asidemenu .link {
     text-decoration: none;
     color: inherit;
 }
@@ -90,47 +89,47 @@
     margin: 10px 0;
 }
 
-#sidebar ul {
+#asidemenu ul {
     list-style-type: none;
     padding-left: 0;
 }
 
-#sidebar .collapse {
+#asidemenu .collapse {
     transition: max-height 0.3s ease-out;
     max-height: 0;
     overflow: hidden;
 }
 
-#sidebar .collapse.show {
+#asidemenu .collapse.show {
     max-height: 1000px;
 }
 
-#sidebar .item.leaf:hover {
+#asidemenu .item.leaf:hover {
     color: #ffffff;
 }
 
-#sidebar .item.leaf:hover i {
+#asidemenu .item.leaf:hover i {
     color: #ffffff;
 }
 
-#sidebar .item.leaf {
+#asidemenu .item.leaf {
     transition: background-color 0.3s;
 }
 
-#sidebar .item.leaf:hover {
+#asidemenu .item.leaf:hover {
     background-color: #1e282c;
     color: #ffffff;
 }
 
-#sidebar .item.leaf:hover i {
+#asidemenu .item.leaf:hover i {
     color: #ffffff;
 }
 
-#sidebar .item.link {
+#asidemenu .item.link {
     cursor: pointer;
 }
 
-#sidebar a.item {
+#asidemenu a.item {
     text-decoration: none;
     color: inherit;
     display: flex;
@@ -141,101 +140,105 @@
     margin-top: 80px;
 }
 
-#sidebar .v-icon {
+.v-list {
+    color: rgb(184, 199, 206);
+}
+
+#asidemenu .v-icon {
     color: #cfa18b;
     margin-right: 10px;
 }
 
 /* Aplicar hover solo a elementos de primer nivel */
-#sidebar > div > div > ul > li > .item.leaf:hover,
-#sidebar > div > div > ul > li > a.item.leaf:hover {
+#asidemenu > div > div > ul > li > .item.leaf:hover,
+#asidemenu > div > div > ul > li > a.item.leaf:hover {
     background-color: #1e282c;
     color: #ffffff;
 }
 
-#sidebar > div > div > ul > li > .item.leaf:hover i,
-#sidebar > div > div > ul > li > a.item.leaf:hover i {
+#asidemenu > div > div > ul > li > .item.leaf:hover i,
+#asidemenu > div > div > ul > li > a.item.leaf:hover i {
     color: #ffffff;
 }
 
 /* Aplicar hover a todos los elementos de primer nivel */
-#sidebar > div > div > ul > li > .item:hover,
-#sidebar > div > div > ul > li > a.item:hover {
+#asidemenu > div > div > ul > li > .item:hover,
+#asidemenu > div > div > ul > li > a.item:hover {
     background-color: #1e282c;
     color: #ffffff;
 }
 
-#sidebar > div > div > ul > li > .item:hover i,
-#sidebar > div > div > ul > li > a.item:hover i {
+#asidemenu > div > div > ul > li > .item:hover i,
+#asidemenu > div > div > ul > li > a.item:hover i {
     color: #ffffff;
 }
 
 /* Remover el hover de los elementos internos */
-#sidebar .treeview-menu .item:hover {
+#asidemenu .treeview-menu .item:hover {
     background-color: transparent;
     color: inherit;
 }
 
-#sidebar .treeview-menu .item:hover i {
+#asidemenu .treeview-menu .item:hover i {
     color: #cfa18b;
 }
 
 /* Remover el hover de los elementos internos */
-#sidebar .treeview-menu .item.leaf:hover {
+#asidemenu .treeview-menu .item.leaf:hover {
     background-color: transparent;
     color: inherit;
 }
 
-#sidebar .treeview-menu .item.leaf:hover i {
+#asidemenu .treeview-menu .item.leaf:hover i {
     color: #cfa18b;
 }    
 
-#sidebar {
-    width: 85px; /* Aumentado para dar espacio a los iconos angle-right */
+#asidemenu {
+    width: 86px; /* Aumentado para dar espacio a los iconos angle-right */
     left: 0;
     transition: width 0.3s;
 }
 
-#sidebar.expanded {
+#asidemenu.expanded {
     width: 300px;
 }
 
-#sidebar .item_node {
+#asidemenu .item_node {
     display: none;
 }
 
-#sidebar.expanded .item_node {
+#asidemenu.expanded .item_node {
     display: inline-block;
 }
 
-#sidebar .angle-right,
-#sidebar .angle-down {
+#asidemenu .angle-right,
+#asidemenu .angle-down {
     position: absolute;
     right: 5px;
 }
 
-#sidebar .angle-down {
+#asidemenu .angle-down {
     display: none;
 }
 
-#sidebar.expanded .angle-right {
+#asidemenu.expanded .angle-right {
     display: none;
 }
 
-#sidebar.expanded .angle-down {
+#asidemenu.expanded .angle-down {
     display: inline-block;
 }
 
-#sidebar .v-icon {
+#asidemenu .v-icon {
     margin-right: 0;
 }
 
-#sidebar.expanded .v-icon {
+#asidemenu.expanded .v-icon {
     margin-right: 10px;
 }
 
 #content {
-    margin-left: 70px; /* Ajustado para coincidir con el ancho del sidebar */
+    margin-left: 70px; /* Ajustado para coincidir con el ancho del asidemenu */
     padding-top: 80px;
     min-height: 100vh;
     transition: margin-left 0.3s;
@@ -251,7 +254,7 @@
     Extras
 */
 
-#sidebar .counter {
+#asidemenu .counter {
     background-color: #A52A2A;
     color: white;
     border-radius: 50%;
@@ -262,7 +265,7 @@
     width: 2em;
 }
 
-#sidebar.expanded .counter {
+#asidemenu.expanded .counter {
     right: 10px;
 }
 
