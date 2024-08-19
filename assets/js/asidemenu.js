@@ -123,10 +123,12 @@ class AsideMenu {
 
     toggleSidebar() {
         const isMobileView = window.innerWidth < 992;
+        const sidebarElement = document.getElementById('sidebar');
         const sidebarExpanded = this.asidemenu.classList.contains('expanded');
     
-        // Alternar expansión del asidemenu
+        // Alternar expansión del asidemenu y sidebar
         this.asidemenu.classList.toggle('expanded');
+        sidebarElement.classList.toggle('expanded');
     
         if (sidebarExpanded) {
             this.collapseAllItems();
@@ -136,7 +138,7 @@ class AsideMenu {
         if (!isMobileView) {
             this.content.classList.toggle('shifted', this.asidemenu.classList.contains('expanded'));
         }
-    }    
+    }
 
     handleEvents() {
         window.addEventListener('resize', () => this.handleResize());
@@ -144,17 +146,20 @@ class AsideMenu {
 
     handleResize() {
         const isMobileView = window.innerWidth < 992;
+        const sidebarElement = document.getElementById('sidebar');
     
         if (isMobileView) {
             this.content.classList.remove('shifted');
             if (this.asidemenu.classList.contains('expanded')) {
                 this.asidemenu.classList.remove('expanded');
+                sidebarElement.classList.remove('expanded');
                 this.collapseAllItems();
             }
         } else if (!this.asidemenu.classList.contains('expanded')) {
             this.asidemenu.classList.add('collapsed');
+            sidebarElement.classList.remove('expanded');
         }
-    }   
+    }
 
     collapseAllItems() {
         const collapseElements = this.asidemenu.querySelectorAll('.collapse');

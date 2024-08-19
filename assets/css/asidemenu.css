@@ -269,3 +269,13 @@
     right: 10px;
 }
 
+
+
+#sidebar {
+    width: 85px; /* Ancho inicial */
+    transition: width 0.3s; /* Añade transición */
+}
+
+#sidebar.expanded {
+    width: 300px; /* Ancho expandido */
+}
