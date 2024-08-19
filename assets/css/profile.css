@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     font-family: Arial, sans-serif;
+    padding: 30px 0px 30px 8px;
 }
 
 .image-container {
