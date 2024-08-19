@@ -10,7 +10,7 @@ const menu_items = {
         },
         { text: "Sign out", 
           atts: {
-            "id": "sign_our",
+            "id": "sign_out",
             "click": "logout()"
           },
           icon: "log-out",
