@@ -4,11 +4,11 @@
     top: 0px;           
     left: -300px;
     width: 300px;
-    background-color: rgba(0,0,0,0.95);
     color: #b8c7ce;
+    background-color: rgba(0,0,0);
+    z-index: 5000;
     transition: all 0.3s;
-    overflow-y: auto;
-    z-index: 1000;
+    overflow-y: auto;    
     -webkit-user-select: none;  /* Safari */
     -moz-user-select: none;     /* Firefox */
     -ms-user-select: none;      /* Internet Explorer/Edge */
