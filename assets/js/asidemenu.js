@@ -116,7 +116,7 @@ class AsideMenu {
                         <div class="item${hasChilds ? '' : ' leaf'}${option.link ? ' link' : ''}" 
                             ${hasChilds ? `data-bs-toggle="collapse" data-bs-target="#${id}"` : ''} 
                             ${additionalAtts}
-                            ${hasChilds ? 'onclick="this.closest(\'#asidemenu\').classList.add(\'expanded\'); document.getElementById(\'sidebar\').classList.add(\'expanded\');"' : ''}
+                            ${hasChilds ? `onclick="menu.expandSidebar()"` : ''}
                         >
                             ${!hasChilds && clickEvent ? `<span class="clickable-area" onclick="${clickEvent}">` : ''}
                             <i aria-hidden="true" class="v-icon" data-feather="${option.icon}"></i>
@@ -191,6 +191,11 @@ class AsideMenu {
                 this.asidemenu.classList.remove('expanded');
                 sidebarElement.classList.remove('expanded');
                 this.collapseAllItems();
+                
+                // Disparar el hook de colapso
+                if (this.onCollapseCallback) {
+                    this.onCollapseCallback();
+                }
             }
         } else if (!this.asidemenu.classList.contains('expanded')) {
             this.asidemenu.classList.add('collapsed');
@@ -211,6 +216,17 @@ class AsideMenu {
             if (expandedHtml) expandedHtml.style.display = isExpanded ? 'block' : 'none';
             if (compactHtml) compactHtml.style.display = isExpanded ? 'none' : 'block';
         });
+    }
+
+    expandSidebar() {
+        if (!this.asidemenu.classList.contains('expanded')) {
+            this.asidemenu.classList.add('expanded');
+            this.sidebar.classList.add('expanded');
+            if (this.onExpandCallback) {
+                this.onExpandCallback();
+            }
+        }
+        this.updateCustomHtmlVisibility();
     }
 
     collapseAllItems() {
