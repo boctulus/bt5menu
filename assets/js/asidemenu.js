@@ -4,7 +4,6 @@ class AsideMenu {
         this.menuConfig = menuConfig;
         this.sidebar = document.getElementById('sidebar');
         this.content = document.getElementById('content');
-        this.sidebarCollapse = document.getElementById('sidebarCollapse');
     }
 
     init() {
@@ -128,7 +127,6 @@ class AsideMenu {
     
         // Alternar expansión del sidebar
         this.sidebar.classList.toggle('expanded');
-        this.sidebarCollapse.setAttribute('aria-expanded', sidebarExpanded);
     
         if (sidebarExpanded) {
             this.collapseAllItems();
@@ -141,7 +139,6 @@ class AsideMenu {
     }    
 
     handleEvents() {
-        this.sidebarCollapse.addEventListener('click', () => this.toggleSidebar());
         window.addEventListener('resize', () => this.handleResize());
     }
 
@@ -152,7 +149,6 @@ class AsideMenu {
             this.content.classList.remove('shifted');
             if (this.sidebar.classList.contains('expanded')) {
                 this.sidebar.classList.remove('expanded');
-                this.sidebarCollapse.setAttribute('aria-expanded', 'false');
                 this.collapseAllItems();
             }
         } else if (!this.sidebar.classList.contains('expanded')) {

@@ -2,11 +2,11 @@ const menu_items = {
     admin:  [
         { text: "Sign out", 
           atts: {
-          "id": "sign_out",
-          "click": "logout();"
+            "id": "sign_our",
+            "click": "logout()"
           },
           icon: "log-out",
-          secondary_icon: "<span onclick=\"event.stopPropagation(); alert('Toggling sidebar')\" data-feather='chevrons-right' style='position: absolute; right: 10px;'></span>"
+          secondary_icon: "<span onclick=\"event.stopPropagation(); menu.toggleSidebar()\" data-feather='chevrons-right' style='position: absolute; right: 10px;'></span>"
         },
         { 
           text: "Exam list", 
