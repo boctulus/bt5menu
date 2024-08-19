@@ -47,7 +47,7 @@ const menu_items = {
           link: "/dashboard/exam-list", 
           icon: "heart", 
           counter: 99, 
-          /* secondary_icon: "<span class=\"counter\">16</span>" */
+          /* secondary_icon: "<span class='counter'>0</span>" */
           /* "separator": true */ 
         },
         { text: "Fast reporting", link: "/dashboard/fast-reporting", icon: "zap" },

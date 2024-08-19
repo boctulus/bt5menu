@@ -84,14 +84,6 @@ class AsideMenu {
                 // console.log('Extra', extra);
 
                 if (level === 0 && option.link && !hasChilds) {
-                    let extra = '';
-                    
-                    if (option.secondary_icon){
-                        extra = option.secondary_icon;
-                    } else if (option.counter){
-                        extra = `<span class="counter">${option.counter}</span>`;
-                    }
-
                     sidebarHTML += `
                         <li>
                             <a href="${option.link}" class="item leaf link">
