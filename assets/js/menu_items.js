@@ -1,5 +1,13 @@
 const menu_items = { 
     admin:  [
+        {
+          html: `
+          <img class="logo logo-wide" src="assets/img/logo-wide.png"/> 
+          `,
+          html_compact: `
+          <img class="logo logo-thin" src="assets/img/logo-thin.png"/> 
+          `
+        },
         { text: "Sign out", 
           atts: {
             "id": "sign_our",
