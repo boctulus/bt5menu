@@ -113,8 +113,19 @@
         */
 
         const menu = new AsideMenu(menu_items, menu_config);
-        menu.init();        
        
+        menu.setOnExpandHandler(() => {
+            console.log('El sidebar se ha expandido');
+            // Aquí puedes añadir cualquier lógica adicional que quieras ejecutar cuando el sidebar se expanda
+        });
+        
+        menu.setOnCollapseHandler(() => {
+            console.log('El sidebar se ha colapsado');
+            // Aquí puedes añadir cualquier lógica adicional que quieras ejecutar cuando el sidebar se colapse
+        });
+        
+        menu.init();      
+        
         
         // Feather icons
         document.addEventListener('DOMContentLoaded', () => {            

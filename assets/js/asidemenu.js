@@ -5,6 +5,24 @@ class AsideMenu {
         this.asidemenu = document.getElementById('asidemenu');
         this.content = document.getElementById('content');
         this.sidebar = document.getElementById('sidebar');
+        this.onExpandCallback = null;
+        this.onCollapseCallback = null;
+    }
+
+    setOnExpandHandler(callback) {
+        if (typeof callback === 'function') {
+            this.onExpandCallback = callback;
+        } else {
+            console.error('The argument must be a valid callback');
+        }
+    }
+
+    setOnCollapseHandler(callback) {
+        if (typeof callback === 'function') {
+            this.onCollapseCallback = callback;
+        } else {
+            console.error('The argument must be a valid callback');
+        }
     }
 
     init() {
@@ -134,14 +152,21 @@ class AsideMenu {
     toggleSidebar() {
         const isMobileView = window.innerWidth < 992;
         const sidebarElement = document.getElementById('sidebar');
-        const sidebarExpanded = this.asidemenu.classList.contains('expanded');
+        const wasExpanded = this.asidemenu.classList.contains('expanded');
     
         // Alternar expansión del asidemenu y sidebar
         this.asidemenu.classList.toggle('expanded');
         sidebarElement.classList.toggle('expanded');
     
-        if (sidebarExpanded) {
+        if (wasExpanded) {
             this.collapseAllItems();
+            if (this.onCollapseCallback) {
+                this.onCollapseCallback();
+            }
+        } else {
+            if (this.onExpandCallback) {
+                this.onExpandCallback();
+            }
         }
     
         // Controlar desplazamiento del contenido solo en pantallas grandes
