@@ -250,10 +250,6 @@
     }
 }
 
-/*
-    Extras
-*/
-
 #asidemenu .counter {
     background-color: #A52A2A;
     color: white;
@@ -268,7 +264,6 @@
 #asidemenu.expanded .counter {
     right: 10px;
 }
-
 
 .custom-html-container .expanded-html,
 .custom-html-container .compact-html {
@@ -290,4 +285,21 @@
 
 #sidebar:not(.expanded) .custom-html-container .compact-html {
     display: block;
+}
+
+/* Rotación 180 grados en sentido horario */
+.rotate-clockwise {
+    transform: rotate(180deg);
+    transition: transform 1.5s ease-in-out;
+}
+
+/* Rotación 180 grados en sentido antihorario */
+.rotate-counterclockwise {
+    transform: rotate(0deg);
+    transition: transform 1.5s ease-in-out;
+}
+
+/* Posición inicial */
+.initial-position {
+    transform: rotate(0deg);
 }

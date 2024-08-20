@@ -14,7 +14,7 @@ const menu_items = {
             "click": "logout()"
           },
           icon: "log-out",
-          secondary_icon: "<span onclick=\"event.stopPropagation(); menu.toggleSidebar()\" data-feather='chevrons-right' style='position: absolute; right: 10px;'></span>"
+          secondary_icon: "<span onclick=\"event.stopPropagation(); menu.toggleSidebar()\" data-feather='chevrons-right' style='position: absolute; right: 8px;'></span>"
         },
         {
           html: `
