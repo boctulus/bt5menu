@@ -2,10 +2,10 @@ const menu_items = {
     admin:  [
         {
           html: `
-          <img class="logo logo-wide" src="assets/img/logo-wide.png"/> 
+          <span class="logo logo-wide">LOGO</span> 
           `,
           html_compact: `
-          <img class="logo logo-thin" src="assets/img/logo-thin.png"/> 
+          <span class="logo logo-thin">L</span>
           `
         },
         { text: "Sign out", 
@@ -26,7 +26,7 @@ const menu_items = {
                 <i data-feather="edit-2"></i>
               </span>
             </div>
-            <span class="name">Francesco Buonvicino</span>
+            <span class="name">Pablo Bozzolo</span>
           </div>
           `,
           html_compact: `
