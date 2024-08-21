@@ -31,11 +31,15 @@
             Possible CSS adjustments
         */
 
+        body {
+            background-color: #E9F0F1; 
+            color: #333333;
+        }
+
         #content {
             transition: margin-left 0.3s;
             padding-top: 80px !important;
-            background-color: #E9F0F1; 
-            color: #333333;
+            background-color: transparent;
             min-height: 100vh;
         }
 
@@ -69,7 +73,13 @@
 </head>
 <body>
     <!-- Navbar demo -->
-    <nav class="navbar navbar-dark bg-primary fixed-top">
+    !-- Navbar con el icono de hamburguesa -->
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <button id="sidebarCollapse" class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon custom-toggler"></span>
+            </button>
+        </div>
     </nav>
 
     <!-- Sidebar (Aside Menu) -->
