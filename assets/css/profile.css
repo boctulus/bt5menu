@@ -42,7 +42,15 @@
     font-size: 14px;
     color: #b8c7ce;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: hidden;    
+    max-width: 0;
+    opacity: 0;
+    display: inline-block; 
+}
+
+.name.show {
+    max-width: 200px;
+    opacity: 1;
 }
 
 .reveal-text {
