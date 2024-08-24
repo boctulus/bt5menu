@@ -12,7 +12,7 @@
 }
 
 #asidemenu {
-    height: 102vh;
+    height: 100%;
     position: fixed;
     top: 0px;           
     width: 300px;
@@ -20,7 +20,7 @@
     background-color: transparent;
     z-index: 5000;
     transition: all 0.3s;
-    overflow-y: auto;    
+    overflow-y: auto;     
     -webkit-user-select: none;  /* Safari */
     -moz-user-select: none;     /* Firefox */
     -ms-user-select: none;      /* Internet Explorer/Edge */
@@ -138,6 +138,7 @@
 
 #list-wrapper {
     margin-top: 80px;
+    padding-bottom: 20px; 
 }
 
 .v-list {
