@@ -26,10 +26,9 @@ const menu_items = {
                 <i data-feather="edit-2"></i>
               </span>
             </div>
-            <span class="name">Pablo Bozzolo</span>
+            <span class="name d-none">Pablo Bozzolo</span>
           </div>
-          `,
-          hide: false,
+          `
         },
         { 
           text: "Exam list", 

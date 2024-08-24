@@ -62,12 +62,19 @@ class AsideMenu {
         let sidebarHTML = `<ul class="list-unstyled${level > 0 ? ' treeview-menu' : ''}">`;
     
         menuItems.forEach((option) => {
-            if (option.html || option.html_compact) {
-                // Si el elemento tiene un bloque HTML directo, lo insertamos tal cual
-                sidebarHTML += `<li class="custom-html-container">
-                    ${option.html ? `<div class="expanded-html">${option.html}</div>` : ''}
-                    ${option.html_compact ? `<div class="compact-html">${option.html_compact}</div>` : ''}
-                </li>`;
+            if (option.html || option.html_compact) {  
+                if (option.html && option.html_compact) {
+                    // Si tiene ambas versiones, usamos la lógica original
+                    sidebarHTML += `<li class="custom-html-container">
+                        <div class="expanded-html">${option.html}</div>
+                        <div class="compact-html">${option.html_compact}</div>
+                    </li>`;
+                } else if (option.html) {
+                    // Si solo tiene html, lo mostramos siempre
+                    sidebarHTML += `<li class="custom-html-container always-visible">
+                        ${option.html}
+                    </li>`;
+                }
             } else {
 
                 const hasChilds = option.childs && option.childs.length > 0;
@@ -195,8 +202,8 @@ class AsideMenu {
         
         customHtmlContainers.forEach(container => {
             const expandedHtml = container.querySelector('.expanded-html');
-            const compactHtml = container.querySelector('.compact-html');
-            
+            const compactHtml  = container.querySelector('.compact-html');
+
             if (expandedHtml) expandedHtml.style.display = isExpanded ? 'block' : 'none';
             if (compactHtml) compactHtml.style.display = isExpanded ? 'none' : 'block';
         });

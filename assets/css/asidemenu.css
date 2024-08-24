@@ -38,6 +38,10 @@
     left: 0;
 }
 
+#asidemenu:not(.expanded) .hide-when-collapsed {
+    display: none;
+}
+
 #asidemenu .item {
     display: flex;
     align-items: center;
