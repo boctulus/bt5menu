@@ -13,3 +13,4 @@ tmp/
 storage/security/
 .env
 winpush.bat
+docs/
