@@ -29,18 +29,7 @@ const menu_items = {
             <span class="name">Pablo Bozzolo</span>
           </div>
           `,
-          html_compact: `
-          <!-- Profile card -->
-          <div class="profile">
-            <div class="image-container">
-              <img src="assets/img/avatar.png" alt="Profile picture" class="profile-image">
-              <span class="edit-icon">
-                <i data-feather="edit-2"></i>
-              </span>
-            </div>
-            <span class="name d-none">Francesco Buonvicino</span>
-          </div>
-          `
+          hide: false,
         },
         { 
           text: "Exam list", 

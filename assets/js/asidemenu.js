@@ -179,6 +179,8 @@ class AsideMenu {
             if (this.asidemenu.classList.contains('expanded')) {
                 this.collapseSidebar();
             }
+            this.toggleContentScroll(false); // Asegúrr de habilitar el scroll en vista móvil
+
         } else if (!this.asidemenu.classList.contains('expanded')) {
             this.asidemenu.classList.add('collapsed');
             this.sidebar.classList.remove('expanded');
@@ -200,10 +202,31 @@ class AsideMenu {
         });
     }
 
+    toggleContentScroll(disable) {
+        const content = document.body;
+        if (disable) {
+            // Guarda la posición actual del scroll
+            this.scrollPosition = window.scrollY;
+            content.style.overflow = 'hidden';
+            content.style.position = 'fixed';
+            content.style.top = `-${this.scrollPosition}px`;
+            content.style.width = '100%';
+        } else {
+            // Restaura el scroll
+            content.style.removeProperty('overflow');
+            content.style.removeProperty('position');
+            content.style.removeProperty('top');
+            content.style.removeProperty('width');
+            window.scrollTo(0, this.scrollPosition);
+        }
+    }
+
     expandSidebar() {
         if (!this.asidemenu.classList.contains('expanded')) {
             this.asidemenu.classList.add('expanded');
             this.sidebar.classList.add('expanded');
+            this.toggleContentScroll(true); // Deshabilita el scroll
+
             if (this.onExpandCallback) {
                 this.onExpandCallback();
             }
@@ -216,6 +239,7 @@ class AsideMenu {
             this.asidemenu.classList.remove('expanded');
             this.sidebar.classList.remove('expanded');
             this.collapseAllItems();
+            this.toggleContentScroll(false); // Habilita el scroll
             
             if (this.onCollapseCallback) {
                 this.onCollapseCallback();
