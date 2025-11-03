@@ -571,6 +571,42 @@
         margin-top: 0px;
     }
 
+    /* Alineación consistente de botones sign-out y toggle en móvil */
+    #asidemenu.expanded .profile {
+        padding: 18px 14px 18px 25px !important;
+        position: relative;
+    }
+
+    #asidemenu.expanded .profile-content {
+        padding-right: 0px;
+        margin-right: 0px;
+    }
+
+    #asidemenu.expanded .toggle-wrapper {
+        padding: 10px 14px 20px 25px !important;
+        position: relative;
+    }
+
+    .list-unstyled {
+        margin-right: -20px !important;
+    }
+
+    #asidemenu.expanded .sign-out-btn {
+        padding: 6px 0 6px 0 !important;
+        margin-right: 0px !important;
+    }
+
+    #asidemenu.expanded .toggle-btn {
+       padding: 6px 0 6px 0 !important;
+        margin-right: 0px !important;
+    }
+
+    #asidemenu.expanded .sign-out-btn svg,
+    #asidemenu.expanded .toggle-btn svg {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
     /* Ajustes para los indicadores de flecha */
     #asidemenu.expanded .angle-right,
     #asidemenu.expanded .angle-down {
