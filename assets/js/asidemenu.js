@@ -232,6 +232,7 @@ class AsideMenu {
         if (!this.asidemenu.classList.contains('expanded')) {
             this.asidemenu.classList.add('expanded');
             this.sidebar.classList.add('expanded');
+            document.body.classList.add('menu-expanded');
             this.toggleContentScroll(true); // Deshabilita el scroll
 
             if (this.onExpandCallback) {
@@ -245,9 +246,10 @@ class AsideMenu {
         if (this.asidemenu.classList.contains('expanded')) {
             this.asidemenu.classList.remove('expanded');
             this.sidebar.classList.remove('expanded');
+            document.body.classList.remove('menu-expanded');
             this.collapseAllItems();
             this.toggleContentScroll(false); // Habilita el scroll
-            
+
             if (this.onCollapseCallback) {
                 this.onCollapseCallback();
             }

@@ -43,13 +43,13 @@
             min-height: 100vh;
         }
 
-        #sidebar {            
+        #sidebar {
             position: fixed;
             top: 0;
             left: 0;
             z-index: 6000;
             height: 102vh;
-            background-color: rgba(0,0,0);
+            background: linear-gradient(180deg, #8B7FD8 0%, #7B6FD8 40%, #6B7CBA 100%);
             width: 86px;
         }
 
@@ -57,24 +57,12 @@
             color: white;
         }
 
-        .logo {
-            position: absolute;
-            top: 8px;
-            left: 30px;
-            font-size: 30px;
-            font-weight: 600;
-            color: orangered;
-        }
-
-        .logo-wide {
-            left: 110px;
-        }
     </style>
 </head>
 <body>
     <!-- Navbar demo -->
-    !-- Navbar con el icono de hamburguesa -->
-    <nav class="navbar navbar-dark bg-dark fixed-top">
+    <!-- Navbar con el icono de hamburguesa -->
+    <nav class="navbar navbar-dark fixed-top" style="background: linear-gradient(90deg, #9B8FE8 0%, #7B6FD8 50%, #6B8CCA 100%);">
         <div class="container-fluid">
             <button id="sidebarCollapse" class="navbar-toggler" type="button">
                 <span class="navbar-toggler-icon custom-toggler"></span>
@@ -84,10 +72,18 @@
 
     <!-- Sidebar (Aside Menu) -->
     <aside id="sidebar">
-        <div id="asidemenu" class="collapsed">        
+        <div id="asidemenu" class="collapsed">
             <!-- Content to be generated dynamically -->
-        </div>    
+        </div>
     </aside>
+
+    <!-- Botón de cierre para móvil -->
+    <button id="mobile-close-btn" onclick="menu.collapseSidebar()" aria-label="Cerrar menú">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </button>
     
     <!-- Content -->
     <div id="content" class="p-4">
@@ -119,49 +115,53 @@
         const menu = new AsideMenu(menu_items, menu_config);
         
         menu.setOnExpandHandler(() => {
-            // Username animation            
+            // Username animation
             const nameElement = document.querySelector('.name');
+            if (nameElement) {
+                nameElement.classList.add('reveal-text');
+            }
 
-            nameElement.classList.remove('d-none');
-            nameElement.classList.add('reveal-text');
-            
-            setTimeout(() => {
-                nameElement.classList.add('show');
-            }, 10);  
-
-            // Expand icon animation
-            const expandElement = document.querySelector('.feather-chevrons-right');
-            expandElement.classList.remove('initial-position', 'rotate-counterclockwise');
-            expandElement.classList.add('rotate-clockwise');
+            // Toggle icon animation
+            const toggleIcon = document.querySelector('.toggle-btn svg');
+            if (toggleIcon) {
+                toggleIcon.classList.remove('rotate-counterclockwise');
+                toggleIcon.classList.add('rotate-clockwise');
+            }
         });
-        
-        
+
+
         menu.setOnCollapseHandler(() => {
-            // Username animation    
+            // Username animation
             const nameElement = document.querySelector('.name');
-
-            nameElement.classList.remove('show');
-            
-            setTimeout(() => {
+            if (nameElement) {
                 nameElement.classList.remove('reveal-text');
-                nameElement.classList.add('d-none');
-            }, 300);  
+            }
 
-            // Expand icon animation
-            const expandElement = document.querySelector('.feather-chevrons-right');
-            expandElement.classList.remove('rotate-clockwise');
-            expandElement.classList.add('rotate-counterclockwise');
+            // Toggle icon animation
+            const toggleIcon = document.querySelector('.toggle-btn svg');
+            if (toggleIcon) {
+                toggleIcon.classList.remove('rotate-clockwise');
+                toggleIcon.classList.add('rotate-counterclockwise');
+            }
         });
         
         
-        menu.init();      
+        menu.init();
 
-        document.addEventListener('DOMContentLoaded', () => {      
-            // Agregar esta línea para establecer la posición inicial
-            document.querySelector('.feather-chevrons-right').classList.add('initial-position');
-
+        document.addEventListener('DOMContentLoaded', () => {
             // Feather icons
             feather.replace();
+
+            // Establecer la posición inicial del toggle icon
+            const toggleIcon = document.querySelector('.toggle-btn svg');
+            if (toggleIcon) {
+                toggleIcon.classList.add('rotate-counterclockwise');
+            }
+
+            // Conectar el botón de hamburguesa con el toggle del menú
+            document.getElementById('sidebarCollapse').addEventListener('click', () => {
+                menu.toggleSidebar();
+            });
         });
         
     </script>

@@ -141,8 +141,14 @@
 }
 
 #list-wrapper {
-    margin-top: 80px;
-    padding-bottom: 20px; 
+    margin-top: 0px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+
+/* Contenedor para logo, profile y toggle con altura fija */
+.menu-header-area {
+    min-height: 200px;
 }
 
 .v-list {
@@ -292,19 +298,291 @@
     display: block;
 }
 
-/* Rotación 180 grados en sentido horario */
-.rotate-clockwise {
-    transform: rotate(180deg);
-    transition: transform 1.5s ease-in-out;
+
+/* Logo container */
+.logo-container {
+    position: relative;
+    width: 100%;
 }
 
-/* Rotación 180 grados en sentido antihorario */
-.rotate-counterclockwise {
-    transform: rotate(0deg);
-    transition: transform 1.5s ease-in-out;
+/* Header del menú móvil - oculto por defecto */
+.mobile-menu-header {
+    display: none;
 }
 
-/* Posición inicial */
-.initial-position {
-    transform: rotate(0deg);
+/* Desktop logo */
+.desktop-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+    height: 66px;
+}
+
+#asidemenu.expanded .desktop-logo {
+    justify-content: flex-start;
+    padding: 8px 0 8px 30px;
+}
+
+.mobile-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.mobile-company-name {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Botón de cierre para móvil */
+#mobile-close-btn {
+    display: none;
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    z-index: 6001;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+#mobile-close-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.05);
+}
+
+#mobile-close-btn svg {
+    width: 26px;
+    height: 26px;
+    color: white;
+    stroke-width: 2.5;
+}
+
+/* Estilos para móvil - menú a pantalla completa */
+@media (max-width: 991px) {
+    /* Ocultar el botón hamburguesa cuando el menú está expandido */
+    body.menu-expanded .navbar-toggler {
+        display: none !important;
+    }
+
+    /* Mostrar botón de cierre cuando el menú está expandido */
+    body.menu-expanded #mobile-close-btn {
+        display: flex !important;
+    }
+
+    /* Menú expandido ocupa toda la pantalla con degradado */
+    #sidebar.expanded {
+        width: 100vw !important;
+        height: 100vh !important;
+        background: linear-gradient(180deg, #9B8FE8 0%, #7B6FD8 40%, #6B8CCA 100%) !important;
+    }
+
+    #asidemenu.expanded {
+        width: 100vw !important;
+        height: 100vh !important;
+        overflow-y: auto;
+    }
+
+    /* Mostrar header móvil y ocultar logo desktop */
+    #asidemenu.expanded .mobile-menu-header {
+        display: block !important;
+        padding: 50px 20px 40px;
+        text-align: center;
+    }
+
+    #asidemenu.expanded .desktop-logo {
+        display: none !important;
+    }
+
+    /* Textos del menú en mayúsculas */
+    #asidemenu.expanded .item_node {
+        text-transform: uppercase;
+    }
+
+    /* Ajustar el contenedor del menú */
+    #asidemenu.expanded #list-wrapper {
+        margin-top: 0px;
+        padding: 0px 20px 20px 20px;
+    }
+
+    /* Iconos más grandes en móvil */
+    #asidemenu.expanded .v-icon {
+        width: 32px !important;
+        height: 32px !important;
+        margin-right: 20px !important;
+    }
+
+    /* Textos más grandes en móvil */
+    #asidemenu.expanded .item_node {
+        font-size: 18px !important;
+        font-weight: 500;
+        color: white !important;
+        letter-spacing: 0.5px;
+    }
+
+    /* Items más espaciados */
+    #asidemenu.expanded .item {
+        padding: 18px 25px !important;
+        margin-bottom: 8px;
+        border-radius: 0px;
+    }
+
+    /* Iconos en color blanco */
+    #asidemenu.expanded .item i,
+    #asidemenu.expanded .v-icon {
+        color: white !important;
+    }
+
+    /* Hover más visible en móvil */
+    #asidemenu.expanded .item:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* Contadores más grandes */
+    #asidemenu.expanded .counter {
+        font-size: 16px !important;
+        padding: 4px 10px !important;
+        min-width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Profile card más grande */
+    #asidemenu.expanded .profile {
+        padding: 30px 20px !important;
+    }
+
+    #asidemenu.expanded .image-container {
+        width: 70px !important;
+        height: 70px !important;
+        margin-right: 20px !important;
+    }
+
+    #asidemenu.expanded .edit-icon {
+        padding: 6px !important;
+    }
+
+    #asidemenu.expanded .edit-icon svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    #asidemenu.expanded .name {
+        font-size: 22px !important;
+        font-weight: 600;
+    }
+
+    /* Logo más grande */
+    #asidemenu.expanded .logo {
+        font-size: 40px !important;
+        top: 15px !important;
+    }
+
+    /* Iconos de flecha más grandes */
+    #asidemenu.expanded .angle-right,
+    #asidemenu.expanded .angle-down {
+        width: 28px !important;
+        height: 28px !important;
+    }
+
+    /* Submenús con mejor espaciado y estilo */
+    #asidemenu.expanded .treeview-menu .sub {
+        padding: 12px 0 !important;
+        font-size: 16px !important;
+        color: rgba(255, 255, 255, 0.95) !important;
+    }
+
+    #asidemenu.expanded .treeview-menu {
+        padding-left: 40px !important;
+        margin-top: 5px;
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        border-radius: 4px;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+
+    #asidemenu.expanded .treeview-menu .treeview-menu {
+        padding-left: 50px !important;
+        background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    /* Items anidados con iconos y textos más grandes */
+    #asidemenu.expanded .treeview-menu .item {
+        padding: 12px 15px !important;
+    }
+
+    #asidemenu.expanded .treeview-menu .v-icon {
+        width: 24px !important;
+        height: 24px !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    #asidemenu.expanded .treeview-menu .item_node {
+        font-size: 16px !important;
+        color: rgba(255, 255, 255, 0.95) !important;
+        font-weight: 400 !important;
+    }
+
+    /* Items anidados de segundo nivel */
+    #asidemenu.expanded .treeview-menu .treeview-menu .item_node {
+        font-size: 16px !important;
+    }
+
+    #asidemenu.expanded .treeview-menu .treeview-menu .v-icon {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    /* Divider más visible */
+    #asidemenu.expanded .dropdown-divider {
+        margin: 20px 0 !important;
+        border-top-width: 2px !important;
+    }
+
+    /* Fondo del collapse para mejor visibilidad */
+    #asidemenu.expanded .collapse.show {
+        background-color: transparent;
+        border-radius: 0px;
+        padding: 0px 0;
+        margin-top: 0px;
+    }
+
+    /* Ajustes adicionales para profile en móvil */
+    #asidemenu.expanded .profile .name {
+        color: white !important;
+    }
+
+    /* Ajustar margen superior en móvil */
+    #asidemenu.expanded #list-wrapper {
+        margin-top: 0px;
+    }
+
+    /* Ajustes para los indicadores de flecha */
+    #asidemenu.expanded .angle-right,
+    #asidemenu.expanded .angle-down {
+        color: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    /* Asegurar que el menú colapsado en móvil esté oculto */
+    #asidemenu:not(.expanded) {
+        display: none;
+    }
+
+    #sidebar:not(.expanded) {
+        display: none;
+    }
 }

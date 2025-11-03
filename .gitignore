@@ -14,3 +14,4 @@ storage/security/
 .env
 winpush.bat
 docs/
+.claude/
